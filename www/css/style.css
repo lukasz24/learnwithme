@@ -1,0 +1,39 @@
+#regPage {
+	background-color: #ffffff;
+}
+
+#header {
+    background-color: #799AC0;
+    color: #ffffff;
+    text-align: center;
+    alignment: left;
+}
+
+#zarejestruj {
+	background-color: #00A6FF;
+	color: #ffffff;
+	font-size: 13px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#nick {
+	margin-left: 10px;
+}
+
+#email {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+#haslo {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+#haslopowt {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
