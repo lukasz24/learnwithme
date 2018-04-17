@@ -1,0 +1,40 @@
+#loginPage {
+    background-color: #ffffff;
+}
+
+#header {
+    background-color: #799AC0;
+    color: #ffffff;
+    text-align: left;
+    alignment: left;
+}
+
+.ui-icon-fbicon:after {
+    background-image: url("../icon/circle-facebook.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+
+.ui-icon-gicon:after {
+    background-image: url("../icon/google.png");
+    /* Make your icon fit */
+    /* background-size: 18px 18px; */
+}
+
+#zaloguj {
+    background-color: #666666;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#zalogujFB {
+    background-color: #3b5998;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#zalogujG {
+    background-color: #d62d20;
+    color: #ffffff;
+    font-size: 13px;
+}
