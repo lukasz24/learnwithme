@@ -7,6 +7,26 @@
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
+ 
+ 
+ 
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",
+    authDomain: "learnwithme-98129.firebaseapp.com",
+    databaseURL: "https://learnwithme-98129.firebaseio.com",
+    projectId: "learnwithme-98129",
+    storageBucket: "learnwithme-98129.appspot.com",
+    messagingSenderId: "1032899670271"
+  };
+ 
+  var xnxx  = firebase.initializeApp(config);
+ 
+  console.log("czy znalazlo baze??? ");
+    console.log(xnxx); //w chrome ctrl + shift + J ==> konsola
+</script>
     </head>
     <body>
         <!-- Start page -->
@@ -20,14 +40,14 @@
                 </div>
             </div>
         </div>
-      
+     
         <!-- Login page -->
         <div data-role="page" id="loginPage">
             <div data-role="header" class="header">
                 <a href="#startPage" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt"></a>
                 <h1>Logowanie</h1>
             </div>
-
+ 
             <div data-role="main" class="ui-content">
                 <div class="ui-field-contain">
                     <input type="text" placeholder="Email" id="email"/>
@@ -41,14 +61,14 @@
                 <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-gicon" id="zalogujG">Zaloguj przez Google</button>
             </div>
         </div>
-      
+     
         <!-- Regestration page -->
         <div data-role="page" id="regPage">
             <div data-role="header" class="header">
                 <a href="#startPage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
                 <h1>Rejestracja</h1>
             </div>
-          
+         
             <div data-role="main" class="ui-content">
                 <div class="ui-field-contain">
                     <input type="text" placeholder="Podaj nick" id="nickreg"/>
@@ -57,7 +77,7 @@
                     <input type="password" placeholder="Powtórz haslo" id="haslopowtreg"/>
                 </div>
             </div>
-
+ 
             <div data-role="footer" data-position="fixed">
                 <button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>
             </div>
