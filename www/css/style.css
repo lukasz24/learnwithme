@@ -51,6 +51,7 @@ body {
 [data-role="footer"] {
 	background-color: #ffffff !important;
 	border: 0 !important;
+    text-align: center;
 }
 
 #regPage {
@@ -60,8 +61,12 @@ body {
 #zarejestruj {
 	background-color: #00A6FF;
 	color: #ffffff;
-	font-size: 13px;
-	width: 100%;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    width: 90%;
+    margin-bottom: 20px;
+
 }
 
 #nickreg {
