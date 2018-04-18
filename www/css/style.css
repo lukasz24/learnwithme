@@ -20,19 +20,25 @@
 #zaloguj {
     background-color: #666666;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 #zalogujFB {
     background-color: #3b5998;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 #zalogujG {
     background-color: #d62d20;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 .backbutt {
