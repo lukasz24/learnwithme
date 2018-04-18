@@ -22,18 +22,19 @@
 	margin-left: 10px;
 }
 
-#email {
+#email, #haslo, #haslopowt {
 	margin-top: 5px;
 	margin-left: 10px;
 }
 
-#haslo {
-	margin-top: 5px;
-	margin-left: 10px;
+#butdiv {
+	float: left;
 }
 
-#haslopowt {
-	margin-top: 5px;
-	margin-left: 10px;
+#backbutt {
+	margin-left: 5px;
+	background-color: #ffffff;
+	margin-top: 20%;
 }
+
 
