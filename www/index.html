@@ -6,21 +6,61 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/jquery-2.1.4.min.js"></script>
-		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-	<!-- Start page -->
+	      <!-- Start page -->
         <div data-role="page" id="startPage">
-            <div data-role="header">
-            </div>
             <div data-role="main" class="ui-content">
                 <div class="ui-field-contain" id="glownyst">
-				<img src="img/logo.png" id="logost">
-					<button class="ui-btn ui-corner-all" id="zalogujst">ZALOGUJ</button>
-					<p> LUB </p>
+                    <img src="img/logo.png" id="logost">
+                    <button class="ui-btn ui-corner-all" id="zalogujst">ZALOGUJ</button>
+                    <p> LUB </p>
                     <button class="ui-btn ui-corner-all" id="zarejestrujst">ZAREJESTRUJ</button>
                 </div>
             </div>
-		</div>
+		    </div>
+      
+        <!-- Login page -->
+        <div data-role="page" id="loginPage">
+            <div data-role="header" class="header">
+                <a href="" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt"></a>
+                <h1>Logowanie</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <div class="ui-field-contain">
+                    <input type="text" placeholder="Email" id="email"/>
+                    <input type="password" placeholder="Hasło" id="haslo"/>
+                </div>
+                <button class="ui-btn ui-corner-all" id="zaloguj">ZALOGUJ</button>
+                <br>
+                <p align="center">LUB</p>
+                <br>
+                <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-fbicon" id="zalogujFB">ZALOGUJ PRZEZ FACEBOOK</button>
+                <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-gicon" id="zalogujG">ZALOGUJ PRZEZ GOOGLE</button>
+            </div>
+        </div>
+      
+        <!-- Regestration page -->
+        <div data-role="page" id="regPage">
+            <div data-role="header">
+                <button class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></button> 
+                <h1>Rejestracja</h1>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                <div class="ui-field-contain">
+					          <input type="text" placeholder="Podaj nick" id="nickreg"/>
+                    <input type="text" placeholder="mail@mail.com" id="emailreg"/>
+                    <input type="password" placeholder="Podaj haslo" id="hasloreg"/>
+					          <input type="password" placeholder="Powtórz haslo" id="haslopowtreg"/>
+                </div>
+            </div>
+          
+			      <div data-role="footer" data-position="fixed">
+				        <button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>
+            </div>
+		    </div>
     </body>
 </html>
