@@ -1,3 +1,9 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
 #regPage {
 	background-color: #ffffff;
 }
@@ -7,6 +13,8 @@
     color: #ffffff;
     text-align: center;
     alignment: left;
+	margin-right: 0px;
+    margin-left: 0px;
 }
 
 #zarejestruj {
@@ -36,5 +44,4 @@
 	background-color: #ffffff;
 	margin-top: 20%;
 }
-
 
