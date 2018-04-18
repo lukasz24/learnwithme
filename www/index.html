@@ -9,22 +9,17 @@
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-	<!-- Regestration page -->
-        <div data-role="page" id="regPage">
+	<!-- Start page -->
+        <div data-role="page" id="startPage">
             <div data-role="header">
-				<button class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" id="backbutt"></button> 
-				<h1>Rejestracja</h1>
             </div>
             <div data-role="main" class="ui-content">
-                <div class="ui-field-contain">
-					<input type="text" placeholder="Podaj nick" id="nickreg"/>
-                    <input type="text" placeholder="mail@mail.com" id="emailreg"/>
-                    <input type="password" placeholder="Podaj haslo" id="hasloreg"/>
-					<input type="password" placeholder="Powtórz haslo" id="haslopowtreg"/>
+                <div class="ui-field-contain" id="glownyst">
+				<img src="img/logo.png" id="logost">
+					<button class="ui-btn ui-corner-all" id="zalogujst">ZALOGUJ</button>
+					<p> LUB </p>
+                    <button class="ui-btn ui-corner-all" id="zarejestrujst">ZAREJESTRUJ</button>
                 </div>
-            </div>
-			<div data-role="footer" data-position="fixed">
-				<button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>
             </div>
 		</div>
     </body>
