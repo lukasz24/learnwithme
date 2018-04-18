@@ -1,0 +1,52 @@
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+[data-role="header"] {
+    background-color: #799AC0 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+}
+
+[data-role="footer"] {
+	background-color: #ffffff !important;
+	border: 0 !important;
+}
+
+#regPage {
+	background-color: #ffffff;
+}
+
+#backbutt {
+	margin-left: 5px;
+	background-color: transparent;
+	border: 0px;
+	float: left;
+	margin-top: 3px;
+}
+
+#zarejestruj {
+	background-color: #00A6FF;
+	color: #ffffff;
+	font-size: 13px;
+	width: 100%;
+}
+
+#nickreg {
+	margin-left: 10px;
+}
+
+#emailreg, #hasloreg, #haslopowtreg {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
+

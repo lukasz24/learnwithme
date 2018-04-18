@@ -2,10 +2,30 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
     </head>
     <body>
-
+	<!-- Regestration page -->
+        <div data-role="page" id="regPage">
+            <div data-role="header">
+				<button class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" id="backbutt"></button> 
+				<h1>Rejestracja</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div class="ui-field-contain">
+					<input type="text" placeholder="Podaj nick" id="nickreg"/>
+                    <input type="text" placeholder="mail@mail.com" id="emailreg"/>
+                    <input type="password" placeholder="Podaj haslo" id="hasloreg"/>
+					<input type="password" placeholder="Powtórz haslo" id="haslopowtreg"/>
+                </div>
+            </div>
+			<div data-role="footer" data-position="fixed">
+				<button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>
+            </div>
+		</div>
     </body>
 </html>
