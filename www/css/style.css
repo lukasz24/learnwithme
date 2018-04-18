@@ -42,3 +42,33 @@
     float: left !important;
     margin-top: 3px !important;
 }
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+[data-role="footer"] {
+	background-color: #ffffff !important;
+	border: 0 !important;
+}
+
+#regPage {
+	background-color: #ffffff;
+}
+
+#zarejestruj {
+	background-color: #00A6FF;
+	color: #ffffff;
+	font-size: 13px;
+	width: 100%;
+}
+
+#nickreg {
+	margin-left: 10px;
+}
+
+#emailreg, #hasloreg, #haslopowtreg {
+	margin-top: 5px;
+	margin-left: 10px;
+}
