@@ -1,13 +1,51 @@
+#loginPage {
+    background-color: #ffffff;
+}
+
+.header {
+    background-color: #799AC0 !important;
+    color: #ffffff !important;
+    text-align: left !important;
+}
+
+.ui-icon-fbicon:after {
+    background-image: url("../icon/circle-facebook.png");
+    background-size: 20px 20px;
+}
+
+.ui-icon-gicon:after {
+    background-image: url("../icon/google.png");
+}
+
+#zaloguj {
+    background-color: #666666;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#zalogujFB {
+    background-color: #3b5998;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#zalogujG {
+    background-color: #d62d20;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.backbutt {
+    margin-left: 5px !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    float: left !important;
+    margin-top: 3px !important;
+}
 
 body {
 	margin: 0px;
 	padding: 0px;
-}
-
-[data-role="header"] {
-    background-color: #799AC0 !important;
-    color: #ffffff !important;
-    text-align: center !important;
 }
 
 [data-role="footer"] {
@@ -17,14 +55,6 @@ body {
 
 #regPage {
 	background-color: #ffffff;
-}
-
-#backbutt {
-	margin-left: 5px;
-	background-color: transparent;
-	border: 0px;
-	float: left;
-	margin-top: 3px;
 }
 
 #zarejestruj {
@@ -42,11 +72,3 @@ body {
 	margin-top: 5px;
 	margin-left: 10px;
 }
-
-
-
-
-
-
-
-
