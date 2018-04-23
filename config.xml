@@ -23,7 +23,7 @@
         <param name="url" value="https://github.com/EddyVerbruggen/Custom-URL-scheme.git" />
         <variable name="com.firebase.cordova" value="mycoolapp" /><!-- change as appropriate -->
 
-    </feature>u
+    </feature>
     <preference name="AndroidLaunchMode" value="singleTask" />
 
     
