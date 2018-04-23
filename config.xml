@@ -11,6 +11,7 @@
     <plugin name="cordova-plugin-device" spec="~1.1.4" />
     <plugin name="cordova-plugin-buildinfo" spec="2.0.1" />
     <plugin name="cordova-universal-links-plugin" spec="1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
 
     <universal-links>
