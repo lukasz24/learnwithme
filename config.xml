@@ -19,7 +19,7 @@
     
     
     <universal-links>
-        <host name="https://gz65b.app.goo.gl" scheme="https" />
+        <host name="gz65b.app.goo.gl" scheme="https" />
         <host name="learnwithme-98129.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback"/>
         </host>
