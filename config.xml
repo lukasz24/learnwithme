@@ -33,7 +33,7 @@
     <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <plugin name="cordova-plugin-customurlscheme" spec="4.3.0" />
-    <plugin name="cordova-plugin-customurlscheme" spec="4.3.0" />
+    
 
     
 </widget>
