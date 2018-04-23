@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </head>
     <body>
         <!-- Start page -->
@@ -33,12 +35,14 @@
                     <input type="text" placeholder="Email" id="email"/>
                     <input type="password" placeholder="Hasło" id="haslo"/>
                 </div>
+                <p id="logInfo"></p>
                 <button class="ui-btn ui-corner-all" id="zaloguj">Zaloguj</button>
                 <br>
                 <p align="center">LUB</p>
                 <br>
                 <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-fbicon" id="zalogujFB">Zaloguj przez Facebook</button>
                 <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-gicon" id="zalogujG">Zaloguj przez Google</button>
+                <button class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-gicon" id="wyloguj">wyloguj</button>
             </div>
         </div>
       
@@ -56,10 +60,12 @@
                     <input type="password" placeholder="Podaj haslo" id="hasloreg"/>
                     <input type="password" placeholder="Powtórz haslo" id="haslopowtreg"/>
                 </div>
+                <p id="regInfo"></p>
             </div>
 
             <div data-role="footer" data-position="fixed">
                 <button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>
+                <button class="ui-btn ui-corner-all" id="zarejestruj1" onclick="goToSite('afterRegPage')">Zarejestruj</button>
             </div>
         </div>
 		
