@@ -7,6 +7,12 @@
     <name>LearnWithMe</name>
     <description>Aplikacja do organizowania wspólnej nauki</description>
     <platform name="android" />
-
+    <universal-links>
+	    <host name="https://gz65b.app.goo.gl" scheme="https" />
+	    <host name="learnwithme98129.firebaseapp.com" scheme="https">
+	        <path url="/__/auth/callback"/>
+	    </host>
+	</universal-links>
+    <preference name="AndroidLaunchMode" value="singleTask" />
     <plugin name="cordova-plugin-device" spec="~1.1.4" />
 </widget>
