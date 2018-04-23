@@ -7,12 +7,32 @@
     <name>LearnWithMe</name>
     <description>Aplikacja do organizowania wspólnej nauki</description>
     <platform name="android" />
-    <universal-links>
-	    <host name="https://gz65b.app.goo.gl" scheme="https" />
-	    <host name="learnwithme98129.firebaseapp.com" scheme="https">
-	        <path url="/__/auth/callback"/>
-	    </host>
-	</universal-links>
-    <preference name="AndroidLaunchMode" value="singleTask" />
+    
+    
     <plugin name="cordova-plugin-device" spec="~1.1.4" />
+    <plugin name="cordova-plugin-buildinfo" spec="2.0.1" />
+    <plugin name="cordova-universal-links-plugin" spec="1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="cordova-plugin-customurlscheme" spec="4.3.0" />
+    <plugin name="cordova-plugin-customurlscheme" spec="4.3.0" />
+
+    <universal-links>
+        <host name="https://gz65b.app.goo.gl" scheme="https" />
+        <host name="learnwithme-98129.firebaseapp.com" scheme="https">
+            <path url="/__/auth/callback"/>
+        </host>
+    </universal-links>
+
+    <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
+        <param name="com.firebase.cordova" value="mycoolapp" />
+    </gap:plugin>
+        <feature name="Custom URL scheme">
+        <param name="id" value="cordova-plugin-customurlscheme" />
+        <param name="url" value="https://github.com/EddyVerbruggen/Custom-URL-scheme.git" />
+        <variable name="com.firebase.cordova" value="mycoolapp" /><!-- change as appropriate -->
+
+    </feature>
+    <preference name="AndroidLaunchMode" value="singleTask" />
+
 </widget>
