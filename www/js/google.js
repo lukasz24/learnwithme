@@ -41,8 +41,17 @@ function onDeviceReady() {
 
 var googleSignin = function() {
   var provider = new firebase.auth.GoogleAuthProvider();
-
-  firebase.auth().signInWithRedirect(provider).then(function() {
+  console.log("Etap1: włączenie funkcji");
+  var pres = firebase.auth().signInWithRedirect(provider);
+  pres.catch(function(error){
+    var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(error.message);
+  console.log(error.code);
+  $('#info').text("Kod błędu: " + error.code);
+  });
+  pres.then(function() {
+    console.log("Etap2: próba logowania");
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
   // This gives you a Google Access Token.
@@ -55,6 +64,8 @@ var googleSignin = function() {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
+  console.log(error.message);
+  console.log(error.code);
 });
   //firebase.auth().currentUser.linkWithRedirect();
 
