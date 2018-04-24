@@ -1,7 +1,47 @@
+function init() {
+  document.addEventListener("deviceready",onDeviceReady, false);
+
+  
+}
+
+function onDeviceReady() {
+  navigator.notification.beep(2);
+  (function() {
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",
+    authDomain: "learnwithme-98129.firebaseapp.com",
+    databaseURL: "https://learnwithme-98129.firebaseio.com",
+    projectId: "learnwithme-98129",
+    storageBucket: "learnwithme-98129.appspot.com",
+    messagingSenderId: "1032899670271"
+  };
+  firebase.initializeApp(config);
+}());
+
+   //EVENT LISTENER ZMIANY STATUSU ZALOGOWANIA
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser){
+      console.log(firebaseUser);
+      $('#info').text("Ktoś jest zalogowany: " + firebaseUser.displayName);
+    }else{
+      console.log("User not logged in");
+      $('#info').text("Nikt się nie zalogował");
+    }
+  });
+
+  /*
+  logout.addEventListener('click', function(){
+    firebase.auth().signOut();
+  });
+  */
+
+}
+
 
 var googleSignin = function() {
   var provider = new firebase.auth.GoogleAuthProvider();
-  
+
   firebase.auth().signInWithRedirect(provider).then(function() {
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
