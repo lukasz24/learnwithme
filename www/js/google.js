@@ -23,10 +23,12 @@ function onDeviceReady() {
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
       console.log(firebaseUser);
+      document.getElementById('info').innerHTML = "Ktoś jest zalogowany: " + firebaseUser.displayName;
       $('#info').text("Ktoś jest zalogowany: " + firebaseUser.displayName);
     }else{
       console.log("User not logged in");
       $('#info').text("Nikt się nie zalogował");
+      document.getElementById('info').innerHTML = "Nikt się nie zalogował";
     }
   });
 
@@ -40,6 +42,7 @@ function onDeviceReady() {
 
 
 var googleSignin = function() {
+  var info = document.getElementById('info');
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
@@ -49,6 +52,7 @@ var googleSignin = function() {
   console.log(error.message);
   console.log(error.code);
   $('#info').text("Kod błędu: " + error.code);
+  info.innerHTML = "Kod błędu: " + error.code;
   });
   pres.then(function() {
     console.log("Etap2: próba logowania");
