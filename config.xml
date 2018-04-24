@@ -6,6 +6,12 @@
 
     <name>LearnWithMe</name>
     <description>Aplikacja do organizowania wspólnej nauki</description>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+
     <platform name="android" />
     
     
@@ -15,12 +21,15 @@
     <plugin name="cordova-plugin-buildinfo" spec="2.0.1" />
     <plugin name="cordova-universal-links-plugin" spec="1.2.1" />
     <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="cordova-universal-links-plugin" spec="~1.2.1" />
     
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-navigation href="http://*/*" />
-    <allow-navigation href="https://*/*" />
+    <plugin name="cordova-plugin-console" spec="~1.0.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.1">
+        <variable name="APP_ID" value="APP_ID" />
+        <variable name="APP_NAME" value="APP_NAME" />
+    </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     
     <universal-links>
         <host name="gz65b.app.goo.gl" scheme="https" />
