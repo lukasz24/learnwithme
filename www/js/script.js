@@ -39,7 +39,6 @@ var googleSignout = function() {
       console.log('Signout Failed')  
    });
 }
-*/
 (function() {
 	// Initialize Firebase
   var config = {
@@ -55,6 +54,8 @@ var googleSignout = function() {
   
 
 }());
+*/
+
 $(document).ready(function(){
   const emailInput = document.getElementById('email');
   const passInput = document.getElementById('haslo');
