@@ -17,6 +17,10 @@
     <plugin name="cordova-plugin-browsertab" spec="0.2.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     
     <universal-links>
         <host name="gz65b.app.goo.gl" scheme="https" />
