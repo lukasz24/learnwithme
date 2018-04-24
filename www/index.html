@@ -85,5 +85,33 @@
 				<a href="" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
             </div>
         </div>
+
+        <!-- Main page - all -->
+        <div data-role="page" id="mainAll">
+            <div data-role="header" class="header">
+                <h1 id="mainAllHeader">LearnWithMe</h1>
+                <div data-role="controlgroup" id="controlBtns" class="btn-group">
+                  <button class="ui-btn ui-corner-all" id="all">Ogłoszenia</button>
+                  <button class="ui-btn ui-corner-all" id="added">Dodane</button>
+                  <button class="ui-btn ui-corner-all" id="watched">Obserwowane</button>
+                </div>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                <div id="container">
+                    <p id="infoAboutMeeting">
+                      Data i godziny<br>
+                      Miejsce<br>
+                      Tagi
+                    </p>
+                    <img src="http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png" id="bookic"/>
+                    <p id="undimg">Liczba obserwatorów</p>
+                </div>
+            </div>
+
+            <div data-role="footer" data-position="fixed" id="footmain">
+                <button class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext" id="dodajBtn">+</button>               
+            </div>
+        </div>
     </body>
 </html>

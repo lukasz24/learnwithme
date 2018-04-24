@@ -128,3 +128,72 @@ body {
 	width:50%;
 	margin:0 auto;
 }
+
+#controlBtns {
+    background-color: #799AC0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#all, #added, #watched {
+    width: 33.3%;
+    float: left;
+    background-color: #799AC0;
+    border-color: #000000;
+    color: #ffffff;
+    font-size: 12px;  
+    text-shadow: 0;
+    opacity: 0.6;
+
+}
+
+#all {
+    opacity: 1;
+}
+
+#dodajBtn {
+    margin-right: 5px !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    float: right !important;
+    margin-top: 3px !important;
+}
+
+#footmain {
+    background-color: transparent!important;
+   
+}
+
+#mainAll {
+    background-color: #5F7C9F;
+}
+
+#container {
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 15px;
+}
+
+#bookic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    float: right;
+    margin-top: 3px;
+    margin-right: 15px
+}
+
+#undimg {
+    position: absolute;
+    top: 50%;
+    right:0;
+    float: right;
+}
+
+#infoAboutMeeting {
+    margin-left: 5px;
+}
