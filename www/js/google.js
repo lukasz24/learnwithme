@@ -9,12 +9,12 @@ function onDeviceReady() {
   (function() {
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",
-    authDomain: "learnwithme-98129.firebaseapp.com",
-    databaseURL: "https://learnwithme-98129.firebaseio.com",
-    projectId: "learnwithme-98129",
-    storageBucket: "learnwithme-98129.appspot.com",
-    messagingSenderId: "1032899670271"
+    apiKey: "AIzaSyD_wuzZSXY0t0H9qXeAt3EZ0-EXOiHzJyg",
+    authDomain: "learnwitmev2.firebaseapp.com",
+    databaseURL: "https://learnwitmev2.firebaseio.com",
+    projectId: "learnwitmev2",
+    storageBucket: "",
+    messagingSenderId: "938090158185"
   };
   firebase.initializeApp(config);
 }());
