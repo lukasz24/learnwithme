@@ -85,5 +85,40 @@
 				<a href="" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
             </div>
         </div>
+
+        <!-- New Announcement page -->
+        <div data-role="page" id="addAnnoun">
+            <div data-role="header" class="header">
+                <a href="#startPage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
+                <h1 id="newAnnHed">Nowe ogłoszenie</h1>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                <div>
+                    Tagi
+                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn"/>
+                    <hr>
+                    Data
+                    <input type="date" placeholder="01-01-2018" id="dateNewAnn"/>
+                    <hr>
+                    Godzina ropoczęcia
+                    <input type="time" placeholder="9:35" id="startTimeNewAnn"/>
+                    <hr>
+                    Godzina zakończenia
+                    <input type="time" placeholder="11:35" id="endTimeNewAnn"/>
+                    <hr>
+                    Miejsce
+                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn"/>
+                    <hr>
+                    Krótki opis (max. 150 znaków)
+                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania"></textarea> 
+                    <hr>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" id="footerNewAnn">
+                <button class="ui-btn ui-corner-all" id="cancBtnNewAnn">Anuluj</button> 
+                <button class="ui-btn ui-corner-all" id="addBtnNewAnn">Dodaj</button>               
+            </div>
+        </div>
     </body>
 </html>
