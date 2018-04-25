@@ -69,6 +69,7 @@ var googleSignin = function() {
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
+  var presRet;
   pres.catch(function(error){
     var errorCode = error.code;
   var errorMessage = error.message;
@@ -81,8 +82,11 @@ var googleSignin = function() {
   pres.then(function() {
     console.log("Etap2: próba logowania");
     info.innerHTML = "Etap2: próba logowania";
-  return firebase.auth().getRedirectResult();
-}).then(function(result) {
+  //return firebase.auth().getRedirectResult();
+  presRet = firebase.auth().getRedirectResult();
+});
+
+  presRet.then(function(result) {
   // This gives you a Google Access Token.
   // You can use it to access the Google API.
   var token = result.credential.accessToken;
