@@ -44,8 +44,9 @@ function onDeviceReady() {
 var googleSignin = function() {
   var info = document.getElementById('info');
   var provider = new firebase.auth.GoogleAuthProvider();
-  
+  info.innerHTML = "Próba logowania...";
 
+/*
   firebase.auth().signInWithRedirect(provider).then(function() {
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
@@ -60,11 +61,11 @@ var googleSignin = function() {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  info.innerHTML = "Kod błędu w catch: " + error.code;
+  info.innerHTML = "Kod błędu w catch: " + errorCode;
 });
+*/
 
 
-/*
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
@@ -73,11 +74,13 @@ var googleSignin = function() {
   var errorMessage = error.message;
   console.log(error.message);
   console.log(error.code);
-  $('#info').text("Kod błędu: " + error.code);
-  info.innerHTML = "Kod błędu: " + error.code;
+  $('#info').text("Kod błędu: " + errorCode);
+  info.innerHTML = "Kod błędu: " + errorCode;
+
   });
   pres.then(function() {
     console.log("Etap2: próba logowania");
+    info.innerHTML = "Etap2: próba logowania";
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
   // This gives you a Google Access Token.
@@ -86,15 +89,19 @@ var googleSignin = function() {
   // The signed-in user info.
   var user = result.user;
   // ...
+  info.innerHTML = "Zalogowano: " + user;
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  console.log(error.message);
-  console.log(error.code);
+  console.log(errorMessage);
+  console.log(errorCode);
+  info.innerHTML = "Kod błędu w catch: " + errorCode;
 });
+
+  info.innerHTML += " end";
   //firebase.auth().currentUser.linkWithRedirect();
-*/
+
    /*
    if (!firebase.auth().currentUser) {
         // [START createprovider]
