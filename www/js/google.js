@@ -43,6 +43,8 @@ function onDeviceReady() {
 
 var googleSignin = function() {
   var info = document.getElementById('info');
+  var provider = new firebase.auth.GoogleAuthProvider();
+  
 
   firebase.auth().signInWithRedirect(provider).then(function() {
   return firebase.auth().getRedirectResult();
@@ -53,11 +55,14 @@ var googleSignin = function() {
   // The signed-in user info.
   var user = result.user;
   // ...
+  info.innerHTML = "Zalogowano: " + user;
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
+  info.innerHTML = "Kod błędu w catch: " + error.code;
 });
+
 
 /*
   var provider = new firebase.auth.GoogleAuthProvider();
