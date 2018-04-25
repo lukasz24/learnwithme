@@ -2,39 +2,96 @@
     background-color: #ffffff;
 }
 
-#header {
-    background-color: #799AC0;
-    color: #ffffff;
-    text-align: left;
-    alignment: left;
+.header {
+    background-color: #799AC0 !important;
+    color: #ffffff !important;
+    text-align: left !important;
 }
 
 .ui-icon-fbicon:after {
     background-image: url("../icon/circle-facebook.png");
-    /* Make your icon fit */
-    background-size: 18px 18px;
+    background-size: 20px 20px;
 }
 
 .ui-icon-gicon:after {
     background-image: url("../icon/google.png");
-    /* Make your icon fit */
-    /* background-size: 18px 18px; */
 }
 
 #zaloguj {
     background-color: #666666;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 #zalogujFB {
     background-color: #3b5998;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 
 #zalogujG {
     background-color: #d62d20;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+.backbutt {
+    margin-left: 5px !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    float: left !important;
+    margin-top: 3px !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+[data-role="footer"] {
+    background-color: #ffffff !important;
+    border: 0 !important;
+    text-align: center;
+}
+
+#regPage {
+    background-color: #ffffff;
+}
+
+#zarejestruj {
+    background-color: #00A6FF;
+    color: #ffffff;
+    font-size: 15px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    width: 90%;
+    margin-bottom: 20px;
+
+}
+
+#logost {
+    width: 90%;
+    margin-bottom: 15%;
+}
+
+#glownyst {
+    text-align: center;
+}
+
+#startPage {
+    background-color: #ffffff;
+}
+
+#zarejestrujst, #zalogujst {
+    background-color: #47525E;
+    color: #ffffff;
+    font-size: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
