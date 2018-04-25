@@ -46,7 +46,9 @@ var googleSignin = function() {
   var provider = new firebase.auth.GoogleAuthProvider();
   info.innerHTML = "Próba logowania...";
 
+/*
   firebase.auth().signInWithRedirect(provider).then(function() {
+    console.log("TESTED");
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
   // This gives you a Google Access Token.
@@ -65,12 +67,13 @@ var googleSignin = function() {
 }).then(function(){
   goToSite("nextPage");
 });
+*/
 
 
-/*
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
+  console.log("Po logowaniu");
   var presRet;
   pres.catch(function(error){
     var errorCode = error.code;
@@ -106,7 +109,7 @@ var googleSignin = function() {
 });
 
   info.innerHTML += " end";
-  */
+  console.log(firebaseUser);
   //firebase.auth().currentUser.linkWithRedirect();
 
    /*

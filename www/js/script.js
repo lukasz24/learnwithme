@@ -77,7 +77,7 @@ $(document).ready(function(){
   	});
   });
 });
-/*
+
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
       document.getElementById('info').innerText = firebaseUser;
@@ -86,7 +86,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
       console.log("User not logged in");
     }
   });
-  */
 /*
 var someDiv = document.getElementById('someDiv');
   var dbRef = firebase.database().ref().child('text');
