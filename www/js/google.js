@@ -72,42 +72,22 @@ var googleSignin = function() {
 
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
-  var pres = firebase.auth().signInWithRedirect(provider);
-  console.log("Po logowaniu");
-  var presRet;
-  pres.catch(function(error){
-    var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(error.message);
-  console.log(error.code);
-  $('#info').text("Kod błędu: " + errorCode);
-  info.innerHTML = "Kod błędu: " + errorCode;
-
-  });
-  pres.then(function() {
-    console.log("Etap2: próba logowania");
-    info.innerHTML = "Etap2: próba logowania";
-  //return firebase.auth().getRedirectResult();
-  presRet = firebase.auth().getRedirectResult();
-});
-
-  presRet.then(function(result) {
-  // This gives you a Google Access Token.
-  // You can use it to access the Google API.
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
   var token = result.credential.accessToken;
   // The signed-in user info.
   var user = result.user;
   // ...
-  info.innerHTML = "Zalogowano: " + user;
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  console.log(errorMessage);
-  console.log(errorCode);
-  info.innerHTML = "Kod błędu w catch: " + errorCode;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
 });
-
   info.innerHTML += " end";
   console.log(firebaseUser);
   //firebase.auth().currentUser.linkWithRedirect();
