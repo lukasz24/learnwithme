@@ -12,9 +12,12 @@
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
 
-     <allow-intent href="*" />
+    <allow-intent href="*" />
     <allow-navigation href="*" />
-    <platform name="android" />
+
+    <platform name="android">
+        <icon src="www/img/logo.png"/>
+    </platform>
     
     <universal-links>
         <host name="gz65b.app.goo.gl" scheme="https" />
