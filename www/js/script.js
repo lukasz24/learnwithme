@@ -1,4 +1,4 @@
-/*
+
 function goToSite(id){
   
   //window.location.href+='#' + id;
@@ -7,7 +7,7 @@ function goToSite(id){
   anch.setAttribute("href", "#"+id);
   anch.click();
 }
-
+/*
 var googleSignin = function() {
   var provider = new firebase.auth.GoogleAuthProvider();
    firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -43,19 +43,16 @@ var googleSignout = function() {
 (function() {
 	// Initialize Firebase
   var config = {
-    apiKey: "AIzaSyD_wuzZSXY0t0H9qXeAt3EZ0-EXOiHzJyg",
-    authDomain: "learnwitmev2.firebaseapp.com",
-    databaseURL: "https://learnwitmev2.firebaseio.com",
-    projectId: "learnwitmev2",
-    storageBucket: "",
-    messagingSenderId: "938090158185"
+    apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",
+    authDomain: "learnwithme-98129.firebaseapp.com",
+    databaseURL: "https://learnwithme-98129.firebaseio.com",
+    projectId: "learnwithme-98129",
+    storageBucket: "learnwithme-98129.appspot.com",
+    messagingSenderId: "1032899670271"
   };
   firebase.initializeApp(config);
 
-  
-
 }());
-
 $(document).ready(function(){
   const emailInput = document.getElementById('email');
   const passInput = document.getElementById('haslo');
@@ -80,6 +77,16 @@ $(document).ready(function(){
   	});
   });
 });
+/*
+firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser){
+      document.getElementById('info').innerText = firebaseUser;
+      console.log(firebaseUser);
+    }else{
+      console.log("User not logged in");
+    }
+  });
+  */
 /*
 var someDiv = document.getElementById('someDiv');
   var dbRef = firebase.database().ref().child('text');

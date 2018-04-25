@@ -6,19 +6,7 @@ function init() {
 
 function onDeviceReady() {
   navigator.notification.beep(2);
-  (function() {
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyD_wuzZSXY0t0H9qXeAt3EZ0-EXOiHzJyg",
-    authDomain: "learnwitmev2.firebaseapp.com",
-    databaseURL: "https://learnwitmev2.firebaseio.com",
-    projectId: "learnwitmev2",
-    storageBucket: "",
-    messagingSenderId: "938090158185"
-  };
-  firebase.initializeApp(config);
-}());
-
+  
    //EVENT LISTENER ZMIANY STATUSU ZALOGOWANIA
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
@@ -39,14 +27,25 @@ function onDeviceReady() {
   */
 
 }
-
+$(document).ready(function(){
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser){
+      console.log(firebaseUser);
+      document.getElementById('info').innerHTML = "Ktoś jest zalogowany: " + firebaseUser.displayName;
+      $('#info').text("Ktoś jest zalogowany: " + firebaseUser.displayName);
+    }else{
+      console.log("User not logged in");
+      $('#info').text("Nikt się nie zalogował");
+      document.getElementById('info').innerHTML = "Nikt się nie zalogował";
+    }
+  });
+});
 
 var googleSignin = function() {
   var info = document.getElementById('info');
   var provider = new firebase.auth.GoogleAuthProvider();
   info.innerHTML = "Próba logowania...";
 
-/*
   firebase.auth().signInWithRedirect(provider).then(function() {
   return firebase.auth().getRedirectResult();
 }).then(function(result) {
@@ -56,16 +55,19 @@ var googleSignin = function() {
   // The signed-in user info.
   var user = result.user;
   // ...
-  info.innerHTML = "Zalogowano: " + user;
+  console.log("User not logged in" + user);
+  //info.innerHTML = "Zalogowano: " + user;
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
-  info.innerHTML = "Kod błędu w catch: " + errorCode;
+  //info.innerHTML = "Kod błędu w catch: " + errorCode;
+}).then(function(){
+  goToSite("nextPage");
 });
-*/
 
 
+/*
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
@@ -104,6 +106,7 @@ var googleSignin = function() {
 });
 
   info.innerHTML += " end";
+  */
   //firebase.auth().currentUser.linkWithRedirect();
 
    /*
