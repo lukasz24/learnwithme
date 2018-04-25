@@ -43,6 +43,26 @@ function onDeviceReady() {
 
 var googleSignin = function() {
   var info = document.getElementById('info');
+
+  firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+    // This gives you a Google Access Token.
+    // You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+    info.innerHTML = "Zalogowany User: " + user;
+  }
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  info.innerHTML = "Kod błędu w catch: " + error.code;
+});
+
+
+/*
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
   var pres = firebase.auth().signInWithRedirect(provider);
@@ -72,7 +92,7 @@ var googleSignin = function() {
   console.log(error.code);
 });
   //firebase.auth().currentUser.linkWithRedirect();
-
+*/
    /*
    if (!firebase.auth().currentUser) {
         // [START createprovider]
