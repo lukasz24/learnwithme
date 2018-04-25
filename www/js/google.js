@@ -72,43 +72,21 @@ var googleSignin = function() {
 
   var provider = new firebase.auth.GoogleAuthProvider();
   console.log("Etap1: włączenie funkcji");
-  var pres = firebase.auth().signInWithRedirect(provider);
-  console.log("Po logowaniu");
-  var presRet;
-  pres.catch(function(error){
-    var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(error.message);
-  console.log(error.code);
-  $('#info').text("Kod błędu: " + errorCode);
-  info.innerHTML = "Kod błędu: " + errorCode;
-
-  });
-  pres.then(function() {
-    console.log("Etap2: próba logowania");
-    info.innerHTML = "Etap2: próba logowania";
-  //return firebase.auth().getRedirectResult();
-  presRet = firebase.auth().getRedirectResult();
-});
-
-  presRet.then(function(result) {
-  // This gives you a Google Access Token.
-  // You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
+  // Using a redirect.
+firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+    // This gives you a Google Access Token.
+    var token = result.credential.accessToken;
+  }
   var user = result.user;
-  // ...
-  info.innerHTML = "Zalogowano: " + user;
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorMessage);
-  console.log(errorCode);
-  info.innerHTML = "Kod błędu w catch: " + errorCode;
 });
 
-  info.innerHTML += " end";
+// Start a sign in process for an unauthenticated user.
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('profile');
+provider.addScope('email');
+firebase.auth().signInWithRedirect(provider);
+  
   console.log(firebaseUser);
   //firebase.auth().currentUser.linkWithRedirect();
 
