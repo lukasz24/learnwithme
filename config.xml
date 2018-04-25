@@ -12,9 +12,16 @@
     <allow-navigation href="http://*/*" />
     <allow-navigation href="https://*/*" />
 
+     <allow-intent href="*" />
+    <allow-navigation href="*" />
     <platform name="android" />
     
-    
+    <universal-links>
+        <host name="gz65b.app.goo.gl" scheme="https" />
+        <host name="learnwithme98129.firebaseapp.com" scheme="https">
+            <path url="/__/auth/callback"/>
+        </host>
+    </universal-links>
 
     
     <plugin name="cordova-plugin-device" spec="1.1.4" />
@@ -31,12 +38,7 @@
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     
-    <universal-links>
-        <host name="gz65b.app.goo.gl" scheme="https" />
-        <host name="learnwithme98129.firebaseapp.com" scheme="https">
-            <path url="/__/auth/callback"/>
-        </host>
-    </universal-links>
+    
 
     
     <preference name="AndroidLaunchMode" value="singleTask" />

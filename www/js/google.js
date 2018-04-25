@@ -8,6 +8,7 @@ function onDeviceReady() {
   navigator.notification.beep(2);
   
    //EVENT LISTENER ZMIANY STATUSU ZALOGOWANIA
+   /*
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
       console.log(firebaseUser);
@@ -40,6 +41,21 @@ $(document).ready(function(){
     }
   });
 });
+
+function check(){
+  document.getElementById('info').innerHTML = "Sprawdzam czy ktoś się zalogował";
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser){
+      console.log(firebaseUser);
+      document.getElementById('info').innerHTML = "Ktoś jest zalogowany: " + firebaseUser.displayName;
+      $('#info').text("QKtoś jest zalogowany: " + firebaseUser.displayName);
+    }else{
+      console.log("User not logged in");
+      $('#info').text("QNikt się nie zalogował");
+      document.getElementById('info').innerHTML = "Nikt się nie zalogował";
+    }
+  });
+};
 
 var googleSignin = function() {
   var info = document.getElementById('info');
