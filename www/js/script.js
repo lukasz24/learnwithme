@@ -40,6 +40,7 @@ var googleSignout = function() {
    });
 }
 */
+/*
 (function() {
 	// Initialize Firebase
   var config = {
@@ -53,6 +54,7 @@ var googleSignout = function() {
   firebase.initializeApp(config);
 
 }());
+*/
 $(document).ready(function(){
   const emailInput = document.getElementById('email');
   const passInput = document.getElementById('haslo');
