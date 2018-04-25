@@ -55,12 +55,12 @@ function check(){
       document.getElementById('info').innerHTML = "Nikt się nie zalogował";
     }
   });
-};
+}
 
 var googleSignin = function() {
   var info = document.getElementById('info');
   var provider = new firebase.auth.GoogleAuthProvider();
-  info.innerHTML = "Próba logowania...";
+  info.innerHTML = "Próba logowania do Google...";
 
   firebase.auth().signInWithRedirect(provider).then(function() {
   return firebase.auth().getRedirectResult();
@@ -170,6 +170,7 @@ var signout = function() {
 }
 
 var fbLogin = function() {
+    info.innerHTML = "Próba logowania do FB...";
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().useDeviceLanguage();
     firebase.auth().signInWithRedirect(provider).then(function() {
@@ -184,3 +185,4 @@ var fbLogin = function() {
         var email = error.email;
         var credential = error.credential;
     });
+}
