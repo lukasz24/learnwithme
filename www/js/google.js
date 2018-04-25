@@ -76,6 +76,8 @@ var googleSignin = function() {
   var errorCode = error.code;
   var errorMessage = error.message;
 });
+
+
 /*
   firebase.auth().signInWithRedirect(provider).then(function() {
     console.log("TESTED");
