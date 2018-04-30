@@ -41,7 +41,7 @@
     padding-bottom: 13px;
 }
 
-.backbutt {
+.backbutt, .menubtn {
     margin-left: 5px !important;
     background-color: transparent !important;
     border: 0 !important;
@@ -129,14 +129,14 @@ body {
 	margin:0 auto;
 }
 
-#controlBtns {
+#controlBtns, #controlBtnsAd, #controlBtnsWat {
     background-color: #799AC0;
     width: 100%;
     margin: 0;
     padding: 0;
 }
 
-#all, #added, #watched {
+#all, #added, #watched, #allAd, #addedAd, #watchedAd, #allWat, #addedWat, #watchedWat {
     width: 33.3%;
     float: left;
     background-color: #799AC0;
@@ -148,12 +148,12 @@ body {
     border-radius: 0;
 }
 
-#all {
+#all, #addedAd, #watchedWat {
     opacity: 1;
     
 }
 
-#dodajBtn {
+#dodajBtn, #dodajBtnAd, #dodajBtnWat {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -167,16 +167,16 @@ body {
     font-size: 40px;
 }
 
-#footmain {
+#footmain, #footmainAd, #footmainWat {
     background-color: transparent!important;
    
 }
 
-#mainAll {
+#mainAll, #mainAdd, #mainWatched {
     background-color: #5F7C9F;
 }
 
-#container {
+#container, #containerAd, #containerWat {
     width: 100%;
     height: 80px;
     background-color: #ffffff;
@@ -184,7 +184,7 @@ body {
     border-radius: 15px;
 }
 
-#bookic {
+#bookic, #bookicAd, #bookicWat {
     position: absolute;
     top: 0;
     right: 0;
@@ -194,7 +194,7 @@ body {
     margin-right: 15px
 }
 
-#undimg {
+#undimg, #undimgAd, #undimgWat {
     position: absolute;
     top: 55%;
     right: 40px;
@@ -202,6 +202,6 @@ body {
     text-align: right;
 }
 
-#infoAboutMeeting {
+#infoAboutMeeting, #infoAboutMeetingAd, #infoAboutMeetingWat {
     margin-left: 5px;
 }
