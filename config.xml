@@ -40,7 +40,10 @@
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     
-    
+    <plugin name="cordova-plugin-googleplus" source="npm">
+      <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
+      <variable name="WEB_APPLICATION_CLIENT_ID" value="mywebapplicationclientid" />
+    </plugin>
 
     
     
