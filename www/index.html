@@ -324,5 +324,23 @@
                 <button class="ui-btn ui-corner-all" id="kontaktBtn" onclick="">Kontakt</button>                
             </div>
         </div>
+
+        <!-- Profile settings page -->
+        <div data-role="page" id="profileSettingsPage">
+            <div data-role="header" class="header">
+                <a href="#mainAll" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
+                <h1>Ustawienia profilu</h1>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                Poniżej możesz wpisać nowy nick
+                    <input type="text" placeholder="Nick" id="nickprof"/>
+            </div>
+
+            <div data-role="footer" data-position="fixed" id="footerEditProfile">
+                <button class="ui-btn ui-corner-all" id="saveChangesEditProfile" onclick="goToSite('mainAll')">Zapisz zmiany</button>                
+            </div>
+        </div>
+
     </body>
 </html>
