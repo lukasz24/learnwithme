@@ -105,5 +105,77 @@
                 <img src="img/128greybook.png" id="imgDetails"/>
             </div>
         </div>
+      
+        <!-- New Announcement page -->
+        <div data-role="page" id="addAnnoun">
+            <div data-role="header" class="header">
+                <a href="#startPage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
+                <h1 id="newAnnHed">Nowe ogłoszenie</h1>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                <div>
+                    Tagi
+                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn"/>
+                    <hr>
+                    Data
+                    <input type="date" placeholder="01-01-2018" id="dateNewAnn"/>
+                    <hr>
+                    Godzina ropoczęcia
+                    <input type="time" placeholder="9:35" id="startTimeNewAnn"/>
+                    <hr>
+                    Godzina zakończenia
+                    <input type="time" placeholder="11:35" id="endTimeNewAnn"/>
+                    <hr>
+                    Miejsce
+                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn"/>
+                    <hr>
+                    Krótki opis (max. 150 znaków)
+                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania"></textarea> 
+                    <hr>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" id="footerNewAnn">
+                <button class="ui-btn ui-corner-all" id="cancBtnNewAnn">Anuluj</button> 
+                <button class="ui-btn ui-corner-all" id="addBtnNewAnn">Dodaj</button> 
+            </div>
+        </div>
+      
+        <!-- Page about autors -->
+        <div data-role="page" id="authors">
+            <div data-role="header" class="header">
+                <a href="#startPage" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt"></a>
+                <h1>Autorzy</h1>
+            </div>
+          
+            <div data-role="main">
+                <div id="Pawel">
+                    <p id="PawTekst">
+                        Jestem Paweł Grzyb. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne.I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne.
+                    </p>
+                </div>
+         
+                <div id="Asiam">
+                    <p id="AsTekst">
+                        Jestem Joanna Pełeńska. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne.
+                    </p>
+                </div>
+            
+                <div id="Rudzisz">
+                    <p id="LukTekst">
+                        Jestem Łukasz Rudzisz. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne.
+                    </p>
+                </div>
+             
+                <div id="Radek">
+                    <p id="RadTekst">
+                        Jestem Radosław Smyksy. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne. I lubie pociągi. Pociągi są fajne. Bardzo fajne.
+                    </p>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" id="kontaktFooter">
+                <button class="ui-btn ui-corner-all" id="kontaktBtn">Kontakt</button>                
+            </div>
+        </div>
     </body>
 </html>
