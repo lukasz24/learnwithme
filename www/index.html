@@ -63,7 +63,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed">
-                <button class="ui-btn ui-corner-all" id="zarejestruj">Zarejestruj</button>                
+                <button class="ui-btn ui-corner-all" id="zarejestruj" onclick="goToSite('afterRegPage')">Zarejestruj</button>                
             </div>
         </div>
 		
@@ -93,8 +93,8 @@
                 <h1 id="mainAllHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtns" class="btn-group">
                   <button class="ui-btn" id="all">Ogłoszenia</button>
-                  <button class="ui-btn" id="added">Dodane</button>
-                  <button class="ui-btn" id="watched">Obserwowane</button>
+                  <button class="ui-btn" id="added" onclick="goToSite('mainAdd')">Dodane</button>
+                  <button class="ui-btn" id="watched" onclick="goToSite('mainWatched')">Obserwowane</button>
                 </div>
             </div>
           
@@ -111,7 +111,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmain">
-                <button id="dodajBtn">+</button>               
+                <button id="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
@@ -121,9 +121,9 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainAddHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsAd" class="btn-group">
-                  <button class="ui-btn" id="allAd">Ogłoszenia</button>
+                  <button class="ui-btn" id="allAd" onclick="goToSite('mainAll')">Ogłoszenia</button>
                   <button class="ui-btn" id="addedAd">Dodane</button>
-                  <button class="ui-btn" id="watchedAd">Obserwowane</button>
+                  <button class="ui-btn" id="watchedAd" onclick="goToSite('mainWatched')">Obserwowane</button>
                 </div>
             </div>
           
@@ -140,7 +140,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainAd">
-                <button id="dodajBtnAd">+</button>               
+                <button id="dodajBtnAd" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
@@ -150,8 +150,8 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainWatchHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsWat" class="btn-group">
-                  <button class="ui-btn" id="allWat">Ogłoszenia</button>
-                  <button class="ui-btn" id="addedWat">Dodane</button>
+                  <button class="ui-btn" id="allWat" onclick="goToSite('mainAll')">Ogłoszenia</button>
+                  <button class="ui-btn" id="addedWat" onclick="goToSite('mainAdd')">Dodane</button>
                   <button class="ui-btn" id="watchedWat">Obserwowane</button>
                 </div>
             </div>
@@ -169,7 +169,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainWat">
-                <button id="dodajBtnWat">+</button>               
+                <button id="dodajBtnWat" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
@@ -203,8 +203,8 @@
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="footerNewAnn">
-                <button class="ui-btn" id="cancBtnNewAnn">Anuluj</button> 
-                <button class="ui-btn" id="addBtnNewAnn">Dodaj</button> 
+                <button class="ui-btn" id="cancBtnNewAnn" onclick="goToSite('mainAll')">Anuluj</button> 
+                <button class="ui-btn" id="addBtnNewAnn" onclick="">Dodaj</button> 
             </div>
         </div>
 
@@ -238,9 +238,9 @@
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="footerEditAnn">
-                <button class="ui-btn" id="deleteBtnEditAnn">Odwołaj</button> 
-                <button class="ui-btn" id="cancBtnEditAnn">Anuluj</button> 
-                <button class="ui-btn" id="saveBtnEditAnn">Zapisz zmiany</button>               
+                <button class="ui-btn" id="deleteBtnEditAnn" onclick="">Odwołaj</button> 
+                <button class="ui-btn" id="cancBtnEditAnn" onclick="goToSite('mainAll')">Anuluj</button> 
+                <button class="ui-btn" id="saveBtnEditAnn" onclick="">Zapisz zmiany</button>               
             </div>
         </div>
         
@@ -283,8 +283,8 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="myDetailsFooter">
-                <button class="ui-btn" id="odwolaj">Odwołaj</button>  
-                <button class="ui-btn" id="edytuj">Edytuj</button>                
+                <button class="ui-btn" id="odwolaj" onclick="">Odwołaj</button>  
+                <button class="ui-btn" id="edytuj" onclick="goToSite('editAnnoun')">Edytuj</button>                
             </div>
         </div>
       
@@ -321,7 +321,7 @@
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="kontaktFooter">
-                <button class="ui-btn ui-corner-all" id="kontaktBtn">Kontakt</button>                
+                <button class="ui-btn ui-corner-all" id="kontaktBtn" onclick="">Kontakt</button>                
             </div>
         </div>
     </body>
