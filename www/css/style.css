@@ -225,11 +225,11 @@ body {
     width: 30%;
 }
 
-#newAnnHed {
+#newAnnHed, #editAnnHed {
     margin: 0;
 }
 
-#cancBtnNewAnn {
+#cancBtnNewAnn, #cancBtnEditAnn {
     float: left;
     width: 47%;
     margin-left: 3%;
@@ -240,7 +240,7 @@ body {
     color: #ffffff;
 }
 
-#addBtnNewAnn {
+#addBtnNewAnn, #saveBtnEditAnn {
     float: right;
     width: 47%;
     margin-right: 3%;
@@ -249,6 +249,22 @@ body {
     border: 0;
     background-color: #00A6FF;
     color: #ffffff;
+}
+
+#deleteBtnEditAnn {
+    width: 94%;
+    background-color: #F70005;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#cancBtnEditAnn {
+    background-color: #9B6712;
+}
+
+#saveBtnEditAnn {
+    background-color: #00A6FF;
 }
 
 #footerNewAnn {
