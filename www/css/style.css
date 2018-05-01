@@ -288,7 +288,7 @@ body {
     background-color: #00A6FF;
 }
 
-#footerNewAnn {
+#footerNewAnn, #footerEditProfile {
     background-color: transparent!important;
 }
 
@@ -354,4 +354,13 @@ body {
     text-align: justify;
     margin: 7px;
     text-indent: 15px;
+}
+
+#saveChangesEditProfile {
+    width: 90%;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #ffffff;
+    background-color: #00A6FF;
 }
