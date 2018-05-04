@@ -33,7 +33,7 @@ $(document).ready(function(){
     if(firebaseUser){
       console.log(firebaseUser);
       document.getElementById('info').innerHTML = "Ktoś jest zalogowany: " + firebaseUser.displayName;
-      $('#info').text("Ktoś jest zalogowany: " + firebaseUser.displayName);
+      $('#info').text("Ktoś jest zalogowany: " + firebaseUser.email);
     }else{
       console.log("User not logged in");
       $('#info').text("Nikt się nie zalogował");
@@ -58,66 +58,66 @@ function check(){
 }
 
 var googleSignin = function() {
-  var info = document.getElementById('info');
-  var provider = new firebase.auth.GoogleAuthProvider();
-  info.innerHTML = "Próba logowania do Google...";
+    var info = document.getElementById('info');
+    var provider = new firebase.auth.GoogleAuthProvider();
+    info.innerHTML = "Próba logowania do Google...";
 
-  firebase.auth().signInWithRedirect(provider).then(function() {
-  return firebase.auth().getRedirectResult();
-}).then(function(result) {
-  // This gives you a Google Access Token.
-  // You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-});
+    firebase.auth().signInWithRedirect(provider).then(function() {
+        return firebase.auth().getRedirectResult();
+    }).then(function(result) {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    });
 
 
-/*
-  firebase.auth().signInWithRedirect(provider).then(function() {
-    console.log("TESTED");
-  return firebase.auth().getRedirectResult();
-}).then(function(result) {
-  // This gives you a Google Access Token.
-  // You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ...
-  console.log("User not logged in" + user);
-  //info.innerHTML = "Zalogowano: " + user;
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  //info.innerHTML = "Kod błędu w catch: " + errorCode;
-}).then(function(){
-  goToSite("nextPage");
-});
+    /*
+      firebase.auth().signInWithRedirect(provider).then(function() {
+        console.log("TESTED");
+      return firebase.auth().getRedirectResult();
+    }).then(function(result) {
+      // This gives you a Google Access Token.
+      // You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+      console.log("User not logged in" + user);
+      //info.innerHTML = "Zalogowano: " + user;
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      //info.innerHTML = "Kod błędu w catch: " + errorCode;
+    }).then(function(){
+      goToSite("nextPage");
+    });
 
-/*
+    /*
 
-  var provider = new firebase.auth.GoogleAuthProvider();
-  console.log("Etap1: włączenie funkcji");
-  // Using a redirect.
-firebase.auth().getRedirectResult().then(function(result) {
-  if (result.credential) {
-    // This gives you a Google Access Token.
-    var token = result.credential.accessToken;
-  }
-  var user = result.user;
-});
+      var provider = new firebase.auth.GoogleAuthProvider();
+      console.log("Etap1: włączenie funkcji");
+      // Using a redirect.
+    firebase.auth().getRedirectResult().then(function(result) {
+      if (result.credential) {
+        // This gives you a Google Access Token.
+        var token = result.credential.accessToken;
+      }
+      var user = result.user;
+    });
 
-// Start a sign in process for an unauthenticated user.
-var provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('profile');
-provider.addScope('email');
-firebase.auth().signInWithRedirect(provider);
+    // Start a sign in process for an unauthenticated user.
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    firebase.auth().signInWithRedirect(provider);
   
   console.log(firebaseUser);
   //firebase.auth().currentUser.linkWithRedirect();
@@ -159,17 +159,16 @@ firebase.auth().signInWithRedirect(provider);
   // ...
 });
 */
-}
+};
 
 var signout = function() {
    firebase.auth().signOut()
-    
    .then(function() {
       console.log('Signout Succesfull')
    }, function(error) {
       console.log('Signout Failed')  
    });
-}
+};
 
 var fbLogin = function() {
     info.innerHTML = "Próba logowania do FB...";
@@ -187,4 +186,4 @@ var fbLogin = function() {
         var email = error.email;
         var credential = error.credential;
     });
-}
+};
