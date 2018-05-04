@@ -1,7 +1,7 @@
 function goToSite(id){  
   //window.location.href+='#' + id;
   var anch = document.createElement('a');
-
+  
   anch.setAttribute("href", "#"+id);
   anch.click();
 
@@ -177,10 +177,11 @@ $(document).ready(function(){
   		console.log("User not logged in");
   	}
   });
-
+/*
   logout.addEventListener('click', function(){
   	firebase.auth().signOut();
   });
+  */
 });
 /*
 var someDiv = document.getElementById('someDiv');

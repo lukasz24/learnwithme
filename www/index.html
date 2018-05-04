@@ -9,6 +9,7 @@
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
     </head>
     <body>
         <!-- Start page -->
@@ -82,7 +83,7 @@
 					</p>
 				</div>
 				<img src="img/downarr.png" id="downArrow"/>
-				<a href="" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
+				<a href="#mainAll" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
             </div>
         </div>
 
@@ -92,26 +93,27 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainAllHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtns" class="btn-group">
-                  <button class="ui-btn" id="all">Ogłoszenia</button>
-                  <button class="ui-btn" id="added">Dodane</button>
-                  <button class="ui-btn" id="watched">Obserwowane</button>
+                  <button class="ui-btn" id="all" >Ogłoszenia</button>
+                  <button class="ui-btn" id="added" onclick="goToSite('mainAdd')">Dodane</button>
+                  <button class="ui-btn" id="watched" onclick="goToSite('mainWatched')">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div id="container">
-                    <p id="infoAboutMeeting">
+                <div class="container">
+                    <span class="annKey"></span>
+                    <p class="infoAboutMeeting">
                       Data i godziny<br>
                       Miejsce<br>
                       Tagi
                     </p>
-                    <img src="img/greyBook.png" id="bookic"/>
-                    <p id="undimg">3</p>
+                    <img src="img/greyBook.png" class="bookic"/>
+                    <p class="undimg">3</p>
                 </div>
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmain">
-                <button id="dodajBtn">+</button>               
+                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
@@ -121,26 +123,26 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainAddHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsAd" class="btn-group">
-                  <button class="ui-btn" id="allAd">Ogłoszenia</button>
+                  <button class="ui-btn" id="allAd" onclick="goToSite('mainAll')">Ogłoszenia</button>
                   <button class="ui-btn" id="addedAd">Dodane</button>
-                  <button class="ui-btn" id="watchedAd">Obserwowane</button>
+                  <button class="ui-btn" id="watchedAd" onclick="goToSite('mainWatched')">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div id="containerAd">
-                    <p id="infoAboutMeetingAd">
+                <div class="annKey">
+                    <p class="infoAboutMeeting">
                       Data i godziny<br>
                       Miejsce<br>
                       Tagi
                     </p>
-                    <img src="img/greenBook.png" id="bookicAd"/>
-                    <p id="undimgAd">3</p>
+                    <img src="img/greenBook.png" class="bookicAd"/>
+                    <p class="undimgAd">3</p>
                 </div>
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainAd">
-                <button id="dodajBtnAd">+</button>               
+                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
@@ -150,61 +152,62 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainWatchHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsWat" class="btn-group">
-                  <button class="ui-btn" id="allWat">Ogłoszenia</button>
-                  <button class="ui-btn" id="addedWat">Dodane</button>
+                  <button class="ui-btn" id="allWat" onclick="goToSite('mainAll')">Ogłoszenia</button>
+                  <button class="ui-btn" id="addedWat" onclick="goToSite('mainAdd')">Dodane</button>
                   <button class="ui-btn" id="watchedWat">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div id="containerWat">
-                    <p id="infoAboutMeetingWat">
+                <div class="annKey">
+                    <p class="infoAboutMeeting">
                       Data i godziny<br>
                       Miejsce<br>
                       Tagi
                     </p>
-                    <img src="img/greenBook.png" id="bookicWat"/>
-                    <p id="undimgWat">3</p>
+                    <img src="img/greenBook.png" class="bookicWat"/>
+                    <p class="undimgWat">3</p>
                 </div>
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainWat">
-                <button id="dodajBtnWat">+</button>               
+                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
             </div>
         </div>
 
         <!-- New Announcement page -->
         <div data-role="page" id="addAnnoun">
             <div data-role="header" class="header">
-                <a href="#startPage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
+                <a href="#mainAll" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
                 <h1 id="newAnnHed">Nowe ogłoszenie</h1>
             </div>
           
             <div data-role="main" class="ui-content">
                 <div>
+                    <p id="newAnnInfo"></p>
                     Tagi
-                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn"/>
+                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn" required />
                     <hr>
                     Data
-                    <input type="date" placeholder="01-01-2018" id="dateNewAnn"/>
+                    <input type="date" placeholder="01-01-2018" id="dateNewAnn" required/>
                     <hr>
                     Godzina ropoczęcia
-                    <input type="time" placeholder="9:35" id="startTimeNewAnn"/>
+                    <input type="time" placeholder="9:35" id="startTimeNewAnn" required/>
                     <hr>
                     Godzina zakończenia
-                    <input type="time" placeholder="11:35" id="endTimeNewAnn"/>
+                    <input type="time" placeholder="11:35" id="endTimeNewAnn" required/>
                     <hr>
                     Miejsce
-                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn"/>
+                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn" required/>
                     <hr>
                     Krótki opis (max. 150 znaków)
-                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania"></textarea> 
+                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania" id="descriptionAnn" required></textarea> 
                     <hr>
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="footerNewAnn">
-                <button class="ui-btn" id="cancBtnNewAnn">Anuluj</button> 
-                <button class="ui-btn" id="addBtnNewAnn">Dodaj</button> 
+                <button class="ui-btn" id="cancBtnNewAnn" onclick="goToSite('mainAll')">Anuluj</button> 
+                <button class="ui-btn" id="addBtnNewAnn" onclick="addAnnoun()">Dodaj</button> 
             </div>
         </div>
 
@@ -239,7 +242,7 @@
             </div>
             <div data-role="footer" data-position="fixed" id="footerEditAnn">
                 <button class="ui-btn" id="deleteBtnEditAnn">Odwołaj</button> 
-                <button class="ui-btn" id="cancBtnEditAnn">Anuluj</button> 
+                <button class="ui-btn" id="cancBtnEditAnn" onclick="goToSite('MyAnnDetailsPage')">Anuluj</button> 
                 <button class="ui-btn" id="saveBtnEditAnn">Zapisz zmiany</button>               
             </div>
         </div>
