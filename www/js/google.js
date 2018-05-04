@@ -48,7 +48,7 @@ function check(){
     if(firebaseUser){
       console.log(firebaseUser);
       document.getElementById('info').innerHTML = "Ktoś jest zalogowany: " + firebaseUser.displayName;
-      $('#info').text("QKtoś jest zalogowany: " + firebaseUser.displayName);
+      $('#info').text("QKtoś jest zalogowany: " + firebaseUser.email);
     }else{
       console.log("User not logged in");
       $('#info').text("QNikt się nie zalogował");
