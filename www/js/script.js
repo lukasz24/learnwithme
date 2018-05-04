@@ -157,7 +157,7 @@ $(document).ready(function(){
 	  		emailRegInput.style.border = "0px solid #ff7777";
 	  		passwdReg1Input.style.border = "0px solid #ff7777"; 
 	  		passwdReg2Input.style.border = "0px solid #ff7777"; 
-        addUserToDB(emailReg, nickReg)
+        addUserToDB(emailReg, nickReg, firebase.auth().currentUser.uid)
 	  		goToSite('afterRegPage');
   		});
 
@@ -190,7 +190,7 @@ var someDiv = document.getElementById('someDiv');
   var dbRef = firebase.database().ref().child('text');
   dbRef.on('value', snap => someDiv.innerText = snap.val());
 */
-function addUserToDB(email, nick){
+function addUserToDB(email, nick, userKey){
   var emails = email.replace('.', ',');
   var userData = {
     email: emails,
@@ -199,6 +199,6 @@ function addUserToDB(email, nick){
     added: {}
   };
   
-  var newKey = firebase.database().ref().child('users').push().key;
-  firebase.database().ref().child('users/' + newKey).set(userData);
+  //var newKey = firebase.database().ref().child('users').push().key;
+  firebase.database().ref().child('users/' + userKey).set(userData);
 }
