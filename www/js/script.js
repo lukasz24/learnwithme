@@ -112,6 +112,7 @@ $(document).ready(function(){
 
   //EVENT LISTENER DO REJESTRACJI
   btnRegis.addEventListener('click', function() {
+    const nickReg = document.getElementById('nickreg').value;
   	//Pobranie email i hasła
   	const emailRegInput = document.getElementById('emailreg');
   	const emailReg = emailRegInput.value;
@@ -156,6 +157,7 @@ $(document).ready(function(){
 	  		emailRegInput.style.border = "0px solid #ff7777";
 	  		passwdReg1Input.style.border = "0px solid #ff7777"; 
 	  		passwdReg2Input.style.border = "0px solid #ff7777"; 
+        addUserToDB(emailReg, nickReg)
 	  		goToSite('afterRegPage');
   		});
 
@@ -188,3 +190,15 @@ var someDiv = document.getElementById('someDiv');
   var dbRef = firebase.database().ref().child('text');
   dbRef.on('value', snap => someDiv.innerText = snap.val());
 */
+function addUserToDB(email, nick){
+  var emails = email.replace('.', ',');
+  var userData = {
+    email: emails,
+    name: nick,
+    watched: {},
+    added: {}
+  };
+  
+  var newKey = firebase.database().ref().child('users').push().key;
+  firebase.database().ref().child('users/' + newKey).set(userData);
+}

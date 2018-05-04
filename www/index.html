@@ -94,22 +94,13 @@
                 <h1 id="mainAllHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtns" class="btn-group">
                   <button class="ui-btn" id="all" >Ogłoszenia</button>
-                  <button class="ui-btn" id="added" onclick="goToSite('mainAdd')">Dodane</button>
-                  <button class="ui-btn" id="watched" onclick="goToSite('mainWatched')">Obserwowane</button>
+                  <button class="ui-btn" id="added" onclick="getMyAnn()">Dodane</button>
+                  <button class="ui-btn" id="watched" onclick="getMyWatched()">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div class="container">
-                    <span class="annKey"></span>
-                    <p class="infoAboutMeeting">
-                      Data i godziny<br>
-                      Miejsce<br>
-                      Tagi
-                    </p>
-                    <img src="img/greyBook.png" class="bookic"/>
-                    <p class="undimg">3</p>
-                </div>
+                
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmain">
@@ -123,22 +114,14 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainAddHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsAd" class="btn-group">
-                  <button class="ui-btn" id="allAd" onclick="goToSite('mainAll')">Ogłoszenia</button>
+                  <button class="ui-btn" id="allAd" onclick="getAllAnn()">Ogłoszenia</button>
                   <button class="ui-btn" id="addedAd">Dodane</button>
-                  <button class="ui-btn" id="watchedAd" onclick="goToSite('mainWatched')">Obserwowane</button>
+                  <button class="ui-btn" id="watchedAd" onclick="getMyWatched()">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div class="annKey">
-                    <p class="infoAboutMeeting">
-                      Data i godziny<br>
-                      Miejsce<br>
-                      Tagi
-                    </p>
-                    <img src="img/greenBook.png" class="bookicAd"/>
-                    <p class="undimgAd">3</p>
-                </div>
+                
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainAd">
@@ -152,22 +135,14 @@
                 <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
                 <h1 id="mainWatchHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsWat" class="btn-group">
-                  <button class="ui-btn" id="allWat" onclick="goToSite('mainAll')">Ogłoszenia</button>
-                  <button class="ui-btn" id="addedWat" onclick="goToSite('mainAdd')">Dodane</button>
+                  <button class="ui-btn" id="allWat" onclick="getAllAnn()">Ogłoszenia</button>
+                  <button class="ui-btn" id="addedWat" onclick="getMyAnn()">Dodane</button>
                   <button class="ui-btn" id="watchedWat">Obserwowane</button>
                 </div>
             </div>
           
             <div data-role="main" class="ui-content">
-                <div class="annKey">
-                    <p class="infoAboutMeeting">
-                      Data i godziny<br>
-                      Miejsce<br>
-                      Tagi
-                    </p>
-                    <img src="img/greenBook.png" class="bookicWat"/>
-                    <p class="undimgWat">3</p>
-                </div>
+                
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainWat">

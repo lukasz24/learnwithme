@@ -66,16 +66,7 @@ function currentDate() {
 	return output;
 }
 $(document).ready(function(){
-	var mainCont = $("#mainAll > div[data-role='main']");
 	
-	database.child('classifieds/').on("child_added", function(data, prevChildKey){
-		var newAnn = data.val();
-		mainCont.append("<div class='container'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
-			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'></p></div>");
-		
-	});
 });
 
 function getAllAnn(){
@@ -88,14 +79,37 @@ function getAllAnn(){
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
 			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'></p></div>");
-	
+		
 	console.log(prevChildKey);
 		console.log('dodano nowe ogłoszenie!');
 		console.log(data);
 
 	});
+	goToSite('mainAll');
 	
 	
 }
 
+function getMyAnn(){
+	
+	/*
+	database.child('users/' + user.uid + "/added").on("value", function(data, prevChildKey){
+		var newAnn = data.val();
+		
+		mainCont.append("<div class='container'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
+			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
+			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
+			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'></p></div>");
+		
+	console.log(prevChildKey);
+		console.log('dodano nowe ogłoszenie!');
+		console.log(data);
+
+	});
+	*/
+	goToSite('mainAdd');
+}
+
+function getMyWatched(){
+	goToSite('mainWatched');
 }
