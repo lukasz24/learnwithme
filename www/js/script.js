@@ -24,6 +24,7 @@ $(document).ready(function(){
 	const btnFBLogIn = document.getElementById("zalogujFB");
 	const btnGLogIn = document.getElementById("zalogujG");
 	const btnRegis = document.getElementById("zarejestruj");
+	const continueBtn = document.getElementById("przejdzDoSerwisu");
 	const logout = document.getElementById("wyloguj");
 
 	//EVENT LISTENER DO LOGOWANIA
@@ -135,6 +136,11 @@ $(document).ready(function(){
 		}
 	});
 
+    //EVENT LISTENER DO PRZEJSCIA DO SERWISU
+	continueBtn.addEventListener('click', function() {
+        getAllAnn();
+    });
+
 	//EVENT LISTENER ZMIANY STATUSU ZALOGOWANIA
 	firebase.auth().onAuthStateChanged(firebaseUser => {
 		if (firebaseUser) {
@@ -159,8 +165,8 @@ function addUserToDB(email, nick, userKey){
 	var userData = {
 		email: emails,
 		name: nick,
-		watched: {},
-		added: {}
+		watched: [],
+		added: []
 	};
 	firebase.database().ref().child('users/' + userKey).set(userData);
 }

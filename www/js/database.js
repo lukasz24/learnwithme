@@ -1,5 +1,15 @@
 var database = firebase.database().ref();
 
+var addNewAnn = function() {
+    goToSite('addAnnoun');
+    $('#tagsNewAnn').val("");
+    $('#dateNewAnn').val("");
+    $('#startTimeNewAnn').val("");
+    $('#endTimeNewAnn').val("");
+    $('#placeNewAnn').val("");
+    $('#descriptionAnn').val("");
+};
+
 var addAnnoun = function() {
 	var tagi = $('#tagsNewAnn');
 	var dateAnn = $('#dateNewAnn');
@@ -8,10 +18,10 @@ var addAnnoun = function() {
 	var placeAnn = $('#placeNewAnn');
 	var description = $('#descriptionAnn');
 
-	var dateAdd = currentDate();
+	var dateAdd = formatDate(new Date());
 
 	var tagiS = tagi.val();
-	var dateAnnS = dateAdd;
+	var dateAnnS = formatDate(new Date(dateAnn.val()));
 	var startTimeS = startTime.val();
 	var endTimeS = endTime.val();
 	var placeAnnS = placeAnn.val();
@@ -37,16 +47,14 @@ var addAnnoun = function() {
 			active: true
 		};
 		
-		userID = firebase.auth().currentUser.uid;
+		var userID = firebase.auth().currentUser.uid;
 
 		var newKey = firebase.database().ref().child('classifieds').push().key;
 		console.log(newKey);
 
-		var shortData = {
-			key: newKey
-		};
+		var shortData = newKey;
 		database.child('/classifieds/' + newKey).set(announData);
-		database.child('/users/' + userID + '/added').set(shortData);
+		database.child('/users/' + userID + '/added').push(shortData);
 		goToSite('mainAdd');
 		tagi.text("");
 		dateAnn.text("");
@@ -58,18 +66,17 @@ var addAnnoun = function() {
 	}
 };
 
-function currentDate() {
-	var d = new Date();
+function formatDate(date) {
+    var month = date.getMonth()+1;
+    var day = date.getDate();
 
-	var month = d.getMonth()+1;
-	var day = d.getDate();
+    var output = ((''+day).length<2 ? '0' : '') + day + '-' +
+        ((''+month).length<2 ? '0' : '') + month +
+        '-' + date.getFullYear();
 
-	var output = ((''+day).length<2 ? '0' : '') + day + '-' + 
-					((''+month).length<2 ? '0' : '') + month + 
-					'-' + d.getFullYear();	
-
-	return output;
+    return output;
 }
+
 $(document).ready(function(){
 	
 });

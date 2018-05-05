@@ -83,7 +83,7 @@
 					</p>
 				</div>
 				<img src="img/downarr.png" id="downArrow"/>
-				<a href="#mainAll" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
+				<button class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</button>
             </div>
         </div>
 
@@ -104,7 +104,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmain">
-                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
+                <button class="dodajBtn" onclick="addNewAnn()">+</button>
             </div>
         </div>
 
@@ -125,7 +125,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainAd">
-                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
+                <button class="dodajBtn" onclick="addNewAnn()">+</button>
             </div>
         </div>
 
@@ -146,7 +146,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainWat">
-                <button class="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
+                <button class="dodajBtn" onclick="addNewAnn()">+</button>
             </div>
         </div>
 
@@ -176,7 +176,7 @@
                     <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn" required/>
                     <hr>
                     Krótki opis (max. 150 znaków)
-                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania" id="descriptionAnn" required></textarea> 
+                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania" id="descriptionAnn" required></textarea>
                     <hr>
                 </div>
             </div>
