@@ -364,3 +364,12 @@ body {
     color: #ffffff;
     background-color: #00A6FF;
 }
+
+#chDiv {
+    width: 100%;
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
