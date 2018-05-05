@@ -1,29 +1,10 @@
 function init() {
 	document.addEventListener("deviceready",onDeviceReady, false);
-	
 }
 
 function onDeviceReady() {
 	navigator.notification.beep(2);
 	deviceInfo();
-	
-
-}
-
-function deviceInfo() {
-
-	info =  'Device Model   : '    + device.model + '<br>' + 
-			'Device Name    : '     + device.name + '<br>' + 
-			'Device Cordova : '  + device.cordova + '<br>' + 
-			'Device Platform: ' + device.platform + '<br>' + 
-			'Device UUID    : '     + device.uuid + '<br>' + 
-			'Device Version : '  + device.version + '<br>';
-
-	document.getElementById("deviceDetails").innerHTML = info;	
-}
-
-function showInterests(){
-	$("#myInterests").text("Programming, gaming and eating.");
 }
 
 function approveForm(){
@@ -40,6 +21,7 @@ function approveForm(){
 	$("#fruitLi").text("Fruit: " + $("#select-choice-1").val());
 	$("#quantityLi").text("Quantity: " + $("#quantity").val());
 }
+
 function setMainContent(idcon){
 	var mainContent = $('#mainG');
 	var recipeCon = mainContent.children().first();
@@ -58,7 +40,5 @@ function setMainContent(idcon){
 			var recipe = $(idcon);	
 			mainContent.html(recipe);
 		}
-		
 	}	
-	
 }
