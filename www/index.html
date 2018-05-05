@@ -89,7 +89,7 @@
         <!-- Main page - all -->
         <div data-role="page" id="mainAll">
             <div data-role="header" class="header">
-                <a href="" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn"></a>
+                <a href="#drinksPanel" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all menubtn" data-role="button" role="button"></a>
                 <h1 id="mainAllHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtns" class="btn-group">
                   <button class="ui-btn" id="all">Ogłoszenia</button>
@@ -97,7 +97,21 @@
                   <button class="ui-btn" id="watched" onclick="goToSite('mainWatched')">Obserwowane</button>
                 </div>
             </div>
-          
+            
+            <div data-role="panel" id="drinksPanel" data-position="left" data-display="overlay" data-theme="a" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open">
+
+                <div class="ui-panel-inner" >
+                    <h3>Drink list:</h3>
+                    <ul style="list-style: none; transform: translateX(-40px);">
+                        <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-mini" data-role="button" role="button"  onclick="setMainContent('#lemonadeRecipe')">Lemonade</a></li>
+                        <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-mini" data-role="button" role="button" onclick="setMainContent('#frozenStrawberyRecipe')">Frozen Strawberry Daiquiri</a></li>
+                        <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-mini" data-role="button" role="button" onclick="setMainContent('#paleoHotChocolateRecipe')">Paleo Hot Cocoa</a></li>
+                    </ul>
+                    <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a></div>
+            </div>
+          <div data-role="main" class="ui-content" id="mainG"></div>
+
+
             <div data-role="main" class="ui-content">
                 <div id="container">
                     <p id="infoAboutMeeting">
@@ -341,6 +355,6 @@
                 <button class="ui-btn ui-corner-all" id="saveChangesEditProfile" onclick="goToSite('mainAll')">Zapisz zmiany</button>                
             </div>
         </div>
-
+            
     </body>
 </html>
