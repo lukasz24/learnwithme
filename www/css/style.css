@@ -364,3 +364,15 @@ body {
     color: #ffffff;
     background-color: #00A6FF;
 }
+
+#sideMenu {
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+}
+
+#sideMenuButton{
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-style: none;
+    box-shadow: none; 
+}
