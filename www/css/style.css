@@ -382,4 +382,25 @@ body {
     background-size: 23px 23px;
     background-color: #1E2D3E;
     color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-statistics:after {
+    background-image: url("../icon/bar-chart-5-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-alerts:after {
+    background-image: url("../icon/topic-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-delete:after {
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px; 
 }
