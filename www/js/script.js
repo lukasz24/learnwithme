@@ -161,9 +161,9 @@ var someDiv = document.getElementById('someDiv');
   dbRef.on('value', snap => someDiv.innerText = snap.val());
 */
 function addUserToDB(email, nick, userKey){
-	var emails = email.replace('.', ',');
+	//var emails = email.replace('.', ',');
 	var userData = {
-		email: emails,
+		email: email,
 		name: nick,
 		watched: [],
 		added: []
