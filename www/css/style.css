@@ -404,3 +404,17 @@ body {
     color: #FFFFFF;
     border-radius: 0px; 
 }
+.ui-icon-logout:after {
+    background-image: url("../icon/logout-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-editUser:after {
+    background-image: url("../icon/edit-user-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
