@@ -376,3 +376,10 @@ body {
     border-style: none;
     box-shadow: none; 
 }
+
+.ui-icon-authors:after {
+    background-image: url("../icon/if_group_82700.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+}
