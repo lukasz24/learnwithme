@@ -370,7 +370,7 @@ body {
     color: #FFFFFF;
 }
 
-#sideMenuButton{
+#logoutButton, #editButton, #authorsButton, #statButton, #alertButton, #closePanel{
     background-color: #1E2D3E;
     color: #FFFFFF;
     border-style: none;
