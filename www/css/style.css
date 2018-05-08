@@ -370,7 +370,31 @@ body {
     color: #FFFFFF;
 }
 
+#sideMenu1 {
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+}
+
+#sideMenu2 {
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+}
+
 #logoutButton, #editButton, #authorsButton, #statButton, #alertButton, #closePanel{
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-style: none;
+    box-shadow: none; 
+}
+
+#logoutButton1, #editButton1, #authorsButton1, #statButton1, #alertButton1, #closePanel1{
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-style: none;
+    box-shadow: none; 
+}
+
+#logoutButton2, #editButton2, #authorsButton2, #statButton2, #alertButton2, #closePanel2{
     background-color: #1E2D3E;
     color: #FFFFFF;
     border-style: none;
