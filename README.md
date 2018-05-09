@@ -49,12 +49,12 @@
 			<div id="widoki" style="width:100%; margin-left:0; margin-right:0;">
 				<p style="text-align:center; margin-bottom:0;">Przykładowe ekrany:</p>
 				<div style="background-color:#ffffff;">
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/startowy.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/logowanie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/glowny.PNG" style="width:33%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/dodajogloszenie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/ogloszenie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/menu.PNG" style="width:33%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/startowy.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/logowanie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/glowny.PNG" style="width:33%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/dodajogloszenie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/ogloszenie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/menu.PNG" style="width:33%;"/>
 				</div>
 			</div>
 			<p id="linkprot" style="margin-left:3%; margin-right:3%;">
@@ -77,7 +77,7 @@
 			<p>
 				<p style="margin-bottom:3px;">1. <a href="https://github.com/joanna19uek/learnwithme">Repozytorium - github</a></p>
 				<p style="margin-top:3px; margin-bottom:3px;">2. <a href="https://trello.com/b/l0KEcqv4/learnwithme">Trello</a></p>
-				<p style="margin-top:3px;">3. <a href="">Arkusz z wykazem prac</a></p>
+				<p style="margin-top:3px;">3. <a href="https://docs.google.com/spreadsheets/d/1nIEVyIZY24wEoDDYCWdjmhf5hP-b1Ik1kdbR6i_nn-0/edit?usp=sharing">Arkusz z wykazem prac</a></p>
 			</p>
 		</div>
 		<footer style="position:fixed; bottom:2%; left:0; width: 100%; text-align:right; border:0; margin:0; padding:0; background:transparent;">
