@@ -425,6 +425,7 @@ body {
     width: 55px;
     position: absolute;
     left: 20px;
+}
  
 #currentEmail, #currentNick {
     opacity: 0.6;
