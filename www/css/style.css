@@ -41,7 +41,7 @@
     padding-bottom: 13px;
 }
 
-.backbutt {
+.backbutt, .menubtn {
     margin-left: 5px !important;
     background-color: transparent !important;
     border: 0 !important;
@@ -123,8 +123,366 @@ body {
 	margin-top: 40px!important;
 	background-color: #47525E;
 	color: #ffffff;
-	font-size: 15;
+	font-size: 15px;
 	display:block;
 	width:50%;
 	margin:0 auto;
+}
+
+#controlBtns, #controlBtnsAd, #controlBtnsWat {
+    background-color: #799AC0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#all, #added, #watched, #allAd, #addedAd, #watchedAd, #allWat, #addedWat, #watchedWat {
+    width: 33.3%;
+    float: left;
+    background-color: #799AC0;
+    color: #ffffff;
+    font-size: 12px;  
+    text-shadow: none;
+    opacity: 0.6;
+    border: 1px solid #000000;
+    border-radius: 0;
+}
+
+#all, #addedAd, #watchedWat {
+    opacity: 1;
+    
+}
+
+#dodajBtn, #dodajBtnAd, #dodajBtnWat {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(50, 50, 50, 0.5);
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    border: 0 !important;
+    color: #ffffff;    
+    padding: 0px;
+    font-size: 40px;
+}
+
+#footmain, #footmainAd, #footmainWat {
+    background-color: transparent!important;
+   
+}
+
+#mainAll, #mainAdd, #mainWatched {
+    background-color: #5F7C9F;
+}
+
+#container, #containerAd, #containerWat {
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 15px;
+}
+
+#bookic, #bookicAd, #bookicWat {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    float: right;
+    margin-top: 3px;
+    margin-right: 15px
+}
+
+#undimg, #undimgAd, #undimgWat {
+    position: absolute;
+    top: 55%;
+    right: 40px;
+    float: right;
+    text-align: right;
+}
+
+#infoAboutMeeting, #infoAboutMeetingAd, #infoAboutMeetingWat {
+    margin-left: 5px;
+}
+
+#usersAnnDetails, #usersAnnMyDetails {
+    margin: 0;
+    border-top: 1px solid #000000;
+}
+
+#infosDetails, #infosMyDetails {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 15px;
+}
+
+#imgDetails {
+    position: absolute;
+    float: right;
+    right: 10%;
+    bottom: 10%;
+    width: 30%;
+}
+
+#myDetailsFooter {
+    background-color: transparent!important;
+}
+
+#odwolaj, #edytuj {
+    width: 90%;
+    margin-bottom: 0;
+    margin-top: 0;
+    border: 0;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#odwolaj {
+    background-color: #F50005;
+}
+
+#edytuj {
+    background-color: #8942EA;
+}
+
+#newAnnHed, #editAnnHed {
+    margin: 0;
+}
+
+#cancBtnNewAnn, #cancBtnEditAnn {
+    float: left;
+    width: 47%;
+    margin-left: 3%;
+    margin-bottom: 0;
+    margin-top: 0;
+    border: 0;
+    background-color: #F95F62;
+    color: #ffffff;
+}
+
+#addBtnNewAnn, #saveBtnEditAnn {
+    float: right;
+    width: 47%;
+    margin-right: 3%;
+    margin-bottom: 0;
+    margin-top: 0;
+    border: 0;
+    background-color: #00A6FF;
+    color: #ffffff;
+}
+
+#deleteBtnEditAnn {
+    width: 94%;
+    background-color: #F70005;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#cancBtnEditAnn {
+    background-color: #9B6712;
+}
+
+#saveBtnEditAnn {
+    background-color: #00A6FF;
+}
+
+#footerNewAnn, #footerEditProfile {
+    background-color: transparent !important;
+}
+
+#kontaktBtn {
+    background-color: #00A6FF;
+    color: #ffffff;
+    font-size: 15px;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    border:0;
+}
+
+#Pawel {
+    background-color: #34910d;
+    height: 200px;
+    border: 3px solid #000000;
+    color: #ffffff;
+}
+
+#Asiam {
+    background-color: #ef098f;
+    height: 200px;
+    border-top: 1.5px solid #000000;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    color: #ffffff;
+}
+
+#Rudzisz {
+    background-color: #c19219;
+    height: 200px;
+    border-top: 1.5px solid #000000;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    color: #ffffff;
+}
+
+#Radek {
+    background-color: #09c4ef;
+    height: 200px;
+    margin-bottom: 40px;
+    border-top: 1.5px solid #000000;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    color: #ffffff;
+}
+
+#authors {
+    background-color: #c1bbb6;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+#kontaktFooter {
+    background-color: transparent!important;
+}
+
+#PawTekst, #AsTekst, #LukTekst, #RadTekst {
+    text-align: justify;
+    margin: 7px;
+    text-indent: 15px;
+}
+
+#saveChangesEditProfile {
+    width: 90%;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #ffffff;
+    background-color: #00A6FF;
+}
+
+#sideMenu, #sideMenu1, #sideMenu2 {
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+}
+
+.sideMenuButton {
+    background-color: #1E2D3E !important;
+    color: #FFFFFF !important;
+    border-style: none !important;
+    box-shadow: none !important;
+}
+
+.ui-icon-authors:after {
+    background-image: url("../icon/if_group_82700.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-statistics:after {
+    background-image: url("../icon/bar-chart-5-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-alerts:after {
+    background-image: url("../icon/topic-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-delete:after {
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px; 
+}
+.ui-icon-logout:after {
+    background-image: url("../icon/logout-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+.ui-icon-editUser:after {
+    background-image: url("../icon/edit-user-48.png");
+    background-size: 23px 23px;
+    background-color: #1E2D3E;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+
+.menuLogo {
+    background-color: #1E2D3E;
+    height: 55px;
+    width: 55px;
+    position: absolute;
+    left: 20px;
+}
+ 
+#currentEmail, #currentNick {
+    opacity: 0.6;
+    margin-top: 8px;
+}
+
+#comAll, #comAdd, #comWatched {
+    width: 92%;
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#notice {
+    background-color: #D3D9E0;
+}
+
+#noticeContainer {
+    background-color: #ffffff;
+    height: 80px;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+#noticeHead {
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 0;
+    margin-left: 3px
+}
+
+#noticeText {
+    margin-bottom: 0;
+    font-size: 12px;
+    position: absolute;
+    left: 3px;
+    right: 3px;
+}
+
+.deletebutt {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    margin-top: 0;
+    border: none!important;
+    padding: none!important;
+    background-color: #000000!important;
+}
+
+#chDiv {
+    width: 100%;
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
