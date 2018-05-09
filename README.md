@@ -6,7 +6,7 @@
     <body style="background-color:#bfbfbf; margin:0;">
 		<div id="poczatek" style="width:50%; margin:auto;">
 			<img src="https://raw.githubusercontent.com/joanna19uek/learnwithme/master/www/img/logo.png" style="width:100%;"/>
-			<h1 style="text-align:center; margin-top:0;">Learn with me!</h1>
+			<h1 style="text-align:center; margin-top:0;">LearnWithMe!</h1>
 		</div>
 		<hr>
 		<div id="spisTresci" style="margin-left:3%; margin-right:3%;">
