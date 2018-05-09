@@ -476,3 +476,12 @@ body {
     padding: none!important;
     background-color: #000000!important;
 }
+
+#chDiv {
+    width: 100%;
+    position: absolute;
+    top: 130px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

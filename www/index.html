@@ -9,6 +9,8 @@
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/Chart.bundle.min.js"></script>
     </head>
     <body>
         <!-- Start page -->
@@ -372,7 +374,7 @@
                 <button class="ui-btn ui-corner-all" id="saveChangesEditProfile" onclick="goToSite('mainAll')">Zapisz zmiany</button>                
             </div>
         </div>
-
+      
         <!-- Notification page -->
         <div data-role="page" id="notice">
             <div data-role="header" class="header">
@@ -389,6 +391,25 @@
             </div>
             <div data-role="footer">
                
+            </div>
+        </div>
+
+       <!-- Statistic page -->
+        <div data-role="page" id="chartPage">
+            <div data-role="header" class="header">
+                <a href="#mainAll" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
+                <h1>Statystyki</h1>
+            </div>
+          
+            <div data-role="main" class="ui-content">
+                Wykres przedstawia 6 najpopularniejszych tagów użytych w ogłoszeniach dodawanych przez użytkowników.
+                <div id="chDiv">
+                    <canvas id="chart" width="100%" height="100%"></canvas>
+                </div>
+            </div>
+
+            <div data-role="footer" data-position="fixed" id="footerEditProfile">
+                      <button id="aaa" onclick="chartClick()">Wygeneruj wykres</button>  
             </div>
         </div>
     </body>
