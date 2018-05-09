@@ -86,61 +86,57 @@ function formatDate(date) {
 
 function getAllAnn() {
 	var mainCont = $("#mainAll > div[data-role='main']");
-	mainCont.text('');
-	
-	
-	database.child('classifieds/').on("child_added", function(data) {
+	mainCont.empty();
+	var allChilldAdded = database.child('classifieds/').on("child_added", function(data) {
 		var myAnn = [], myWatch =[];
-		//console.log(data.key);
+		
 		var newAnn = data.val();
 		var usId = firebase.auth().currentUser.uid;
 		//database.child('users/' + firebase.auth().currentUser.uid + "/watched/" + data.key).once('value', function(snap) { myWatch = snap.val(); console.log(myWatch); });
 
 		//database.child('users/' + firebase.auth().currentUser.uid + "/added/" + data.key).once('value', function(snap) { myAnn = snap.val(); console.log(myAnn); });
-				
-		//console.log(data.val());
-		//console.log(myWatch);
+		if(newAnn == null){
+			mainCont.append(' <p id="comAll">Przykro nam, ale nie ma obecnie dostępnych ogłoszeń :(<br>' +' Dodaj jakieś klikając przycisk + u dołu ekranu!</p>');
+		}	
 		var announInfo = "";
 		if(usId == newAnn.author){
-			mainCont.append("<div class='container'  onclick='showMyAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
+			announInfo = "<div class='container'  onclick='showMyAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
+			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
 		}else if(newAnn.followsBy != null && newAnn.followsBy.hasOwnProperty(usId)){
-			mainCont.append("<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
+			announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
+			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
 		}else{
-			mainCont.append("<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
+			announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
+			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
 		}
 		
-		if(mainContAdd.is(':empty')){
-				
-					mainContAdd.append(content);
-				}else{
-					mainContAdd.children().first().before(content);
-					
-				}
-		//console.log(myAnn);
-		//console.log(prevChildKey);
-		//console.log('dodano nowe ogłoszenie!');
-		//console.log(data);
+		if(mainCont.is(':empty')){				
+			mainCont.append(announInfo);
+		}else{
+			mainCont.children().first().before(announInfo);					
+		}
+		
 	});
 	
 	goToSite('mainAll');
+	
 }
 function getMyAnn() {
 	var mainContAdd = $("#mainAdd > div[data-role='main']");
 	mainContAdd.empty();
-	database.child('users/' + firebase.auth().currentUser.uid + "/added").once("value", function(data) {
+	var firstInfo = '<p id="comAdd">Nie dodałeś/dodałaś jeszcze żadnego ogłoszenia.<br> Zmień to klikając przycisk + u dołu ekranu.</p>';	
+        mainContAdd.append(firstInfo);
+        database.child('users/' + firebase.auth().currentUser.uid + "/added").once("value", function(data) {
 		//console.log(data.val());
 		if (data.val() == null) {
-			$('#comAdd').show();
-			//mainContAdd.text("Nic tu nie ma :(");
+			
+			
 		} else {
 			$('#comAdd').hide();
 			var announ = data.val();
@@ -171,27 +167,34 @@ function getMyAnn() {
 
 function getMyWatched() {
 	var mainContWatch = $("#mainWatched > div[data-role='main']");
-	mainContWatch.text('');
-	database.child('users/' + firebase.auth().currentUser.uid + "/watched/").on("child_added", function(data, prevChildKey){
-		//console.log(data.val());
+	mainContWatch.empty();
+	var firstInfoWat = '<p id="comWatched">Nie obserwujesz obecnie żadnych ogłoszeń.<br>Wróć do widoku wszystkich ogłoszeń, wybierz najbardziej interesujące, przejdź do szczegółów i kliknij ikonę książki, aby dodać to ogłoszenie do obserwowanych.</p>';
+	mainContWatch.append(firstInfoWat);
+	database.child('users/' + firebase.auth().currentUser.uid + "/watched").once("value", function(data) {
+		
 		if (data.val() == null) {
-			mainContAdd.text("Nic tu nie ma :(");
+			//mainContWatch.append(firstInfoWat);
 		} else {
 			var announ = data.val();
-			
-			database.child('classifieds/' + announ).once("value").then(function(snapshot) {
-				//console.log(snapshot.val());
-				var newAnn = snapshot.val();
-				mainContWatch.append("<div class='container' onclick='showThisAnnoun(\"" + announ + "\", \"#mainWatched\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
-					newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-					"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-					"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
-
-				//console.log('dodano nowe ogłoszenie!');				
-			});
+			$('#comWatched').hide();
+			for(iter in announ){
+				database.child('classifieds/' + iter).once("value").then(function(snapshot) {				
+					var newAnn = snapshot.val();
+					var contentWat = "<div class='container' onclick='showThisAnnoun(\"" + iter + "\", \"#mainWatched\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+						newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
+						"<br>" + newAnn.place + "<br>" + newAnn.tags +  
+						"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
+					if(mainContWatch.is(':empty')){				
+						mainContWatch.append(contentWat);
+					}else{
+						mainContWatch.children().first().before(contentWat);					
+					}				
+				});
+			}
 		}
 	});
 	goToSite('mainWatched');
+	
 }
 
 
