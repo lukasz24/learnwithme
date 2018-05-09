@@ -425,4 +425,17 @@ body {
     width: 55px;
     position: absolute;
     left: 20px;
+ 
+#currentEmail, #currentNick {
+    opacity: 0.6;
+    margin-top: 8px;
+}
+
+#comAll, #comAdd, #comWatched {
+    width: 92%;
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    color: #ffffff;
+
 }
