@@ -49,12 +49,12 @@
 			<div id="widoki" style="width:100%; margin-left:0; margin-right:0;">
 				<p style="text-align:center; margin-bottom:0;">Przykładowe ekrany:</p>
 				<div style="background-color:#ffffff;">
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/startowy.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/logowanie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/glowny.PNG" style="width:33%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/dodajogloszenie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/ogloszenie.PNG" style="width:32%;"/>
-					<img src="https://raw.githubusercontent.com/Radekl2/learnwithme/master/www/img/menu.PNG" style="width:33%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/startowy.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/logowanie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/glowny.PNG" style="width:33%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/dodajogloszenie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/ogloszenie.PNG" style="width:32%;"/>
+					<img src="https://raw.githubusercontent.com/Radekl2/learnwithmeprototype/master/img/menu.PNG" style="width:33%;"/>
 				</div>
 			</div>
 			<p id="linkprot" style="margin-left:3%; margin-right:3%;">
