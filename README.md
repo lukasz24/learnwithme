@@ -77,7 +77,7 @@
 			<p>
 				<p style="margin-bottom:3px;">1. <a href="https://github.com/joanna19uek/learnwithme">Repozytorium - github</a></p>
 				<p style="margin-top:3px; margin-bottom:3px;">2. <a href="https://trello.com/b/l0KEcqv4/learnwithme">Trello</a></p>
-				<p style="margin-top:3px;">3. <a href="">Arkusz z wykazem prac</a></p>
+				<p style="margin-top:3px;">3. <a href="https://docs.google.com/spreadsheets/d/1nIEVyIZY24wEoDDYCWdjmhf5hP-b1Ik1kdbR6i_nn-0/edit?usp=sharing">Arkusz z wykazem prac</a></p>
 			</p>
 		</div>
 		<footer style="position:fixed; bottom:2%; left:0; width: 100%; text-align:right; border:0; margin:0; padding:0; background:transparent;">
