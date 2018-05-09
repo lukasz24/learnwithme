@@ -369,3 +369,11 @@ body {
     left: 0px;
     
 }
+
+#comAll, #comAdd, #comWatched {
+    width: 92%;
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    color: #ffffff;
+}

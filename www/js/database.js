@@ -55,13 +55,14 @@ var addAnnoun = function() {
 		
 
 		var newKey = firebase.database().ref().child('classifieds').push().key;
-		console.log(newKey);
+		//console.log(newKey);
 
 		var shortData = newKey;
 		database.child('/classifieds/' + newKey).set(announData);
 		//database.child('/users/' + userID + '/added').push(shortData);
 		database.child('/users/' + userID + '/added/' + shortData).set(shortData);
-		goToSite('mainAdd');
+		//goToSite('mainAdd');
+		getMyAnn();
 		tagi.text("");
 		dateAnn.text("");
 		startTime.text("");
@@ -86,36 +87,26 @@ function formatDate(date) {
 function getAllAnn() {
 	var mainCont = $("#mainAll > div[data-role='main']");
 	mainCont.text('');
-	var myAnn = [], myWatch =[];
-
-	database.child('users/' + firebase.auth().currentUser.uid + "/watched").on('value', function(snap) { myWatch = snap.val(); });
-	database.child('users/' + firebase.auth().currentUser.uid + "/added").on('value', function(snap) { myAnn = snap.val(); });
+	
 	
 	database.child('classifieds/').on("child_added", function(data) {
-		var newAnn = data.val();		
-		var isMine = false;	
-		var isWatch = false;		
-		
-		for(isM in myAnn){		
-			if(myAnn[isM] == data.key){				
-				isMine = true;			
-				break;
-			}
-		}
-		
-		for(isM in myWatch){		
-			if(myWatch[isM] == data.key){				
-				isWatch = true;			
-				break;
-			}
-		}		
-		
-		if(isMine){
+		var myAnn = [], myWatch =[];
+		//console.log(data.key);
+		var newAnn = data.val();
+		var usId = firebase.auth().currentUser.uid;
+		//database.child('users/' + firebase.auth().currentUser.uid + "/watched/" + data.key).once('value', function(snap) { myWatch = snap.val(); console.log(myWatch); });
+
+		//database.child('users/' + firebase.auth().currentUser.uid + "/added/" + data.key).once('value', function(snap) { myAnn = snap.val(); console.log(myAnn); });
+				
+		//console.log(data.val());
+		//console.log(myWatch);
+		var announInfo = "";
+		if(usId == newAnn.author){
 			mainCont.append("<div class='container'  onclick='showMyAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
 			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
-		}else if(isWatch){
+		}else if(newAnn.followsBy != null && newAnn.followsBy.hasOwnProperty(usId)){
 			mainCont.append("<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
 			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
@@ -127,6 +118,13 @@ function getAllAnn() {
 			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
 		}
 		
+		if(mainContAdd.is(':empty')){
+				
+					mainContAdd.append(content);
+				}else{
+					mainContAdd.children().first().before(content);
+					
+				}
 		//console.log(myAnn);
 		//console.log(prevChildKey);
 		//console.log('dodano nowe ogłoszenie!');
@@ -137,24 +135,35 @@ function getAllAnn() {
 }
 function getMyAnn() {
 	var mainContAdd = $("#mainAdd > div[data-role='main']");
-	mainContAdd.text('');
-	database.child('users/' + firebase.auth().currentUser.uid + "/added/").on("child_added", function(data, prevChildKey) {
+	mainContAdd.empty();
+	database.child('users/' + firebase.auth().currentUser.uid + "/added").once("value", function(data) {
 		//console.log(data.val());
 		if (data.val() == null) {
-			mainContAdd.text("Nic tu nie ma :(");
+			$('#comAdd').show();
+			//mainContAdd.text("Nic tu nie ma :(");
 		} else {
+			$('#comAdd').hide();
 			var announ = data.val();
-			
-			database.child('classifieds/' + announ).once("value").then(function(snapshot) {
+			for(iter in announ){
+				database.child('classifieds/' + iter).once("value").then(function(snapshot) {
 				//console.log(snapshot.val());
 				var newAnn = snapshot.val();
-				mainContAdd.append("<div class='container' onclick='showMyAnnoun(\"" + announ + "\", \"#mainAdd\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
-					newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-					"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-					"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>");
+				var content = "<div class='container' onclick='showMyAnnoun(\"" + iter + "\", \"#mainAdd\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+				newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
+						"<br>" + newAnn.place + "<br>" + newAnn.tags +  
+						"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
+				if(mainContAdd.is(':empty')){
+				
+					mainContAdd.append(content);
+				}else{
+					mainContAdd.children().first().before(content);
+					
+				}
+				
 
-				//console.log('dodano nowe ogłoszenie!');
-			});
+					//console.log('dodano nowe ogłoszenie!');
+				});
+			}
 		}
 	});
 	goToSite('mainAdd');
