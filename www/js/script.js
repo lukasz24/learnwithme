@@ -265,8 +265,7 @@ function chartClick(dbData, days){
           }
         },
         scales: {
-            yAxes: [{
-            }]
+            yAxes: [{}]
         }
     }
   });
