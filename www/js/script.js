@@ -232,5 +232,10 @@ function chartClick(){
 
 function sendMail()
 {
-  alert('Wszelkie problemy i pytania proszę zgłaszać na adres e-mail: pomoc@pomoc.com');
+  //alert('Wszelkie problemy i pytania proszę zgłaszać na adres e-mail: pomoc@pomoc.com');
+  navigator.notification.alert(
+    'Wszelkie problemy i pytania proszę zgłaszać na adres e-mail: pomoc@pomoc.com', 
+    null, 
+    "Kontakt", 
+    "Ok");
 }
