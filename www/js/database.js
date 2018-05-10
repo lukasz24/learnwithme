@@ -90,17 +90,9 @@ function getAllAnn() {
 	mainCont.append('<p id="comAll">Przykro nam, ale nie ma obecnie dostępnych ogłoszeń :(<br>' +' Dodaj jakieś klikając przycisk + u dołu ekranu!</p>');
 			
 	var usId = firebase.auth().currentUser.uid;
-	var allChilldAdded = database.child('classifieds/').once("value", function(data) {
-		
-		
+	var allChilldAdded = database.child('classifieds/').orderByChild("active").equalTo(true).once("value", function(data) {
 		var newAnn = data.val();
-		
-		//database.child('users/' + firebase.auth().currentUser.uid + "/watched/" + data.key).once('value', function(snap) { myWatch = snap.val(); console.log(myWatch); });
-		
-		//database.child('users/' + firebase.auth().currentUser.uid + "/added/" + data.key).once('value', function(snap) { myAnn = snap.val(); console.log(myAnn); });
-		for(iter in newAnn){
-			console.log(iter);
-			
+		for(iter in newAnn){			
 			var announInfo = "";
 			if(usId == newAnn[iter].author){
 				announInfo = "<div class='container'  onclick='showMyAnnoun(\"" + iter + "\", \"#mainAll\")'><span class='annKey'>" + iter + "</span><p class='infoAboutMeeting'>" +
@@ -138,37 +130,30 @@ function getMyAnn() {
 	var mainContAdd = $("#mainAdd > div[data-role='main']");
 	mainContAdd.empty();
 	var firstInfo = '<p id="comAdd">Nie dodałeś/dodałaś jeszcze żadnego ogłoszenia.<br> Zmień to klikając przycisk + u dołu ekranu.</p>';	
-        mainContAdd.append(firstInfo);
-        database.child('users/' + firebase.auth().currentUser.uid + "/added").once("value", function(data) {
+    mainContAdd.append(firstInfo);
+    database.child('users/' + firebase.auth().currentUser.uid + "/added").once("value", function(data) {
 		//console.log(data.val());
-		if (data.val() == null) {
-			
-			
-		} else {
-			$('#comAdd').hide();
-			var announ = data.val();
-			for(iter in announ){
-				database.child('classifieds/' + iter).once("value").then(function(snapshot) {
-				//console.log(snapshot.val());
-				var newAnn = snapshot.val();
-				var content = "<div class='container' onclick='showMyAnnoun(\"" + iter + "\", \"#mainAdd\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
-				newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-						"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-						"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
-				if(mainContAdd.is(':empty')){
-				
-					mainContAdd.append(content);
-				}else{
-					mainContAdd.children().first().before(content);
-					
+			if (data.val() != null){
+				$('#comAdd').hide();
+				var announ = data.val();
+				for(iter in announ){
+					database.child('classifieds/' + iter).once("value").then(function(snapshot) {
+						var newAnn = snapshot.val();				
+						if(newAnn.active){
+							var content = "<div class='container' onclick='showMyAnnoun(\"" + iter + "\", \"#mainAdd\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+							newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
+									"<br>" + newAnn.place + "<br>" + newAnn.tags +  
+									"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
+							if(mainContAdd.is(':empty')){
+								mainContAdd.append(content);
+							}else{
+								mainContAdd.children().first().before(content);
+							}
+						}	
+					});
 				}
-				
-
-					//console.log('dodano nowe ogłoszenie!');
-				});
 			}
-		}
-	});
+		});
 	goToSite('mainAdd');
 }
 
@@ -179,22 +164,22 @@ function getMyWatched() {
 	mainContWatch.append(firstInfoWat);
 	database.child('users/' + firebase.auth().currentUser.uid + "/watched").once("value", function(data) {
 		
-		if (data.val() == null) {
-			//mainContWatch.append(firstInfoWat);
-		} else {
+		if (data.val() != null) {
 			var announ = data.val();
 			$('#comWatched').hide();
 			for(iter in announ){
 				database.child('classifieds/' + iter).once("value").then(function(snapshot) {				
 					var newAnn = snapshot.val();
-					var contentWat = "<div class='container' onclick='showThisAnnoun(\"" + iter + "\", \"#mainWatched\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
-						newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-						"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-						"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
-					if(mainContWatch.is(':empty')){				
-						mainContWatch.append(contentWat);
-					}else{
-						mainContWatch.children().first().before(contentWat);					
+					if(newAnn.active){
+						var contentWat = "<div class='container' onclick='showThisAnnoun(\"" + iter + "\", \"#mainWatched\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+							newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
+							"<br>" + newAnn.place + "<br>" + newAnn.tags +  
+							"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
+						if(mainContWatch.is(':empty')){				
+							mainContWatch.append(contentWat);
+						}else{
+							mainContWatch.children().first().before(contentWat);					
+						}
 					}				
 				});
 			}
@@ -247,7 +232,7 @@ function showThisAnnoun(key, back){
 
 function toogleWatch(){
 	var newKey = $('#annKeyDetail').text();
-	var myWatched;
+	var myWatch;
 	var usId = firebase.auth().currentUser.uid;
 	var follNum = $('#followersNumb');
 	database.child('users/' + usId + "/watched/" + newKey).once("value").then(function(snapshot) {
