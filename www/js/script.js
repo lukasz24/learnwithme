@@ -1,3 +1,5 @@
+
+
 function goToSite(id){  
   //window.location.href+='#' + id;
   var anch = document.createElement('a');
@@ -188,25 +190,61 @@ var someDiv = document.getElementById('someDiv');
   dbRef.on('value', snap => someDiv.innerText = snap.val());
 */
 
-/*
-Funkcja budująca wykres. Należy podmienić stałe wartości w labels oraz data, aby było znakomicie.
-*/
-function chartClick(){
+function getChartData() {
+  var database = firebase.database().ref();  
+  var ilosc = [0,0,0,0,0,0,0];
+  var daty = ['','','','','','',''];     
+    database.child('classifieds/').once("value", function(data) {
+      var newAnn = data.val();
+      for(i = 0; i < 7; i++){ 
+        let today = getYesterdayDate(i);
+        daty[i] = today;
+        for(iter in newAnn){
+          var dat = newAnn[iter].addDate;
+          if(dat == today){
+            ilosc[i] = ilosc[i] + 1;            
+          }          
+        }   
+      }
+      chartClick(ilosc, daty);
+    });
+}
+
+function getYesterdayDate(yesDay){
+  let nowaData = new Date();
+  nowaData.setDate(nowaData.getDate() - yesDay);
+  var dd = nowaData.getDate();
+  var mm = nowaData.getMonth()+1; 
+  var yyyy = nowaData.getFullYear();
+  if(dd<10){
+    dd='0'+dd;
+  } 
+  if(mm<10){
+    mm='0'+mm;
+  } 
+  let propFormat = dd + '-' + mm + '-' + yyyy;
+  return propFormat;
+}
+
+function chartClick(dbData, days){
   var ctx = document.getElementById("chart").getContext('2d');
+  var il = dbData;
+  var d = days;
   var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'horizontalBar',
     data: {
-        labels: ["matematyka", "C", "C++", "całki", "angielski", "WDŻ"],
+        labels: [d[0], d[1], d[2], d[3], d[4], d[5], d[6]],
         datasets: [{
-            label: 'number',
-            data: [6, 12, 30, 2, 8, 25],
+            label: 'ilość dodanych ogłoszeń',
+            data: [il[0], il[1], il[2], il[3], il[4], il[5], il[6], 0],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.8)',
                 'rgba(54, 162, 235, 0.8)',
                 'rgba(255, 206, 86, 0.8)',
                 'rgba(75, 192, 192, 0.8)',
                 'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(123, 232, 157, 0.8)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -214,16 +252,20 @@ function chartClick(){
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(123, 232, 157, 1)'
             ],
             borderWidth: 2
         }]
     },
     options: {
+      legend: {
+          labels: {
+            boxWidth: 0,
+          }
+        },
         scales: {
             yAxes: [{
-                gridLines: {display: false, drawBorder: false},
-                ticks: {display: false}
             }]
         }
     }
