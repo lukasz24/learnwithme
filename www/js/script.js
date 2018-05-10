@@ -1,60 +1,23 @@
-
 function goToSite(id){
-  
-  //window.location.href+='#' + id;
   var anch = document.createElement('a');
-
   anch.setAttribute("href", "#"+id);
   anch.click();
 }
-/*
-var googleSignin = function() {
-  var provider = new firebase.auth.GoogleAuthProvider();
-   firebase.auth().signInWithPopup(provider).then(function(result) {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ..
-  console.log(user);
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
 
-});
-}
-
-var googleSignout = function() {
-   firebase.auth().signOut()
-	
-   .then(function() {
-      console.log('Signout Succesfull')
-   }, function(error) {
-      console.log('Signout Failed')  
-   });
-}
-*/
-/*
 (function() {
-	// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",
-    authDomain: "learnwithme-98129.firebaseapp.com",
-    databaseURL: "https://learnwithme-98129.firebaseio.com",
-    projectId: "learnwithme-98129",
-    storageBucket: "learnwithme-98129.appspot.com",
-    messagingSenderId: "1032899670271"
-  };
-  firebase.initializeApp(config);
-
+    // Initialize Firebase
+    var config = {
+        //apiKey: "AIzaSyC2E9hI9X2e2KCHyEiaz5vcaFXOFvY0HQc",    //browser key
+        apiKey: "AIzaSyBpHX7UlYiPCqkTRxFOi6bisAspEvOGMa4",    //android key
+        authDomain: "learnwithme-98129.firebaseapp.com",
+        databaseURL: "https://learnwithme-98129.firebaseio.com",
+        projectId: "learnwithme-98129",
+        storageBucket: "learnwithme-98129.appspot.com",
+        messagingSenderId: "1032899670271"
+    };
+    firebase.initializeApp(config);
 }());
-*/
+
 $(document).ready(function(){
   const emailInput = document.getElementById('email');
   const passInput = document.getElementById('haslo');
@@ -79,17 +42,3 @@ $(document).ready(function(){
   	});
   });
 });
-
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser){
-      document.getElementById('info').innerText = firebaseUser;
-      console.log(firebaseUser);
-    }else{
-      console.log("User not logged in");
-    }
-  });
-/*
-var someDiv = document.getElementById('someDiv');
-  var dbRef = firebase.database().ref().child('text');
-  dbRef.on('value', snap => someDiv.innerText = snap.val());
-*/
