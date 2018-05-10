@@ -18,6 +18,15 @@ var addAnnoun = function() {
 	var placeAnn = $('#placeNewAnn');
 	var description = $('#descriptionAnn');
 
+	dateAnn.on('focus', function(){
+		dateAnn.css("border", "solid 0px transparent");
+	});
+	startTime.on('focus', function(){
+		startTime.css("border", "solid 0px transparent");
+	});
+	endTime.on('focus', function(){
+		endTime.css("border", "solid 0px transparent");
+	});
 	var dateAdd = formatDate(new Date());
 
 	var tagiS = tagi.val();
@@ -66,6 +75,9 @@ var addAnnoun = function() {
 		placeAnn.text("");
 		description.text("");
 		validateInfo.text("");
+		dateAnn.of('focus');
+		startTime.off('focus');
+		endTime.off('focus');
 	}else {
 		validateInfo.html("Upewnij się czy wprowadzona <strong>data</strong> jest dniem dzisiejszym, a godzina <strong>rozpoczęścia</strong> <br>jest wcześniejszą niż <strong>zakończenia</strong> oraz czy już nie <strong>minęła.</strong>")
 		scrollTo(validateInfo);
@@ -79,6 +91,8 @@ function validateTime(sTime, eTime){
 	if(sTime < eTime){
 		return true;
 	}else{
+		$('#endTimeNewAnn').css("border", "solid 1px red");
+		$('#startTimeNewAnn').css("border", "solid 1px red");
 		return false;
 	}
 }
@@ -90,6 +104,9 @@ function validateDate(inputDate, sTime){
 	if(inputDate >= cdate){
 		return true;
 	}else{
+		$('#dateNewAnn').css("border", "solid 1px red");
+		$('#endTimeNewAnn').css("border", "solid 1px red");
+		$('#startTimeNewAnn').css("border", "solid 1px red");
 		return false;
 	}	
 }
