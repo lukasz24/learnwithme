@@ -30,13 +30,14 @@ var addAnnoun = function() {
 	var userID = firebase.auth().currentUser.uid;
 
 	var validateInfo = $('#newAnnInfo').css("color", "red");
-
+	console.log(validateTime(startTimeS, endTimeS));
+		console.log(validateDate(new Date(dateAnn.val()), startTimeS));
 	if (tagiS.length == 0 || dateAnnS.length == 0 ||
 		startTimeS.length == 0 || endTimeS.length == 0 || 
 		placeAnnS.length == 0 || descriptionS.length == 0) {
 		console.log("Nie wszystkie pola są wypełnione!");
 		validateInfo.text("Proszę uzupełnić puste pola!");
-	} else {
+	} else if(validateTime(startTimeS, endTimeS) && validateDate(new Date(dateAnn.val()), startTimeS)) {
 		var announData = {
 			tags: tagiS,
 			date: dateAnnS,
@@ -51,17 +52,12 @@ var addAnnoun = function() {
 			followersNumb: 0,
 			followsBy: {}
 		};
-		
-		
 
 		var newKey = firebase.database().ref().child('classifieds').push().key;
-		//console.log(newKey);
-
+		
 		var shortData = newKey;
-		database.child('/classifieds/' + newKey).set(announData);
-		//database.child('/users/' + userID + '/added').push(shortData);
-		database.child('/users/' + userID + '/added/' + shortData).set(shortData);
-		//goToSite('mainAdd');
+		database.child('/classifieds/' + newKey).set(announData);		
+		database.child('/users/' + userID + '/added/' + shortData).set(shortData);		
 		getMyAnn();
 		tagi.text("");
 		dateAnn.text("");
@@ -70,9 +66,41 @@ var addAnnoun = function() {
 		placeAnn.text("");
 		description.text("");
 		validateInfo.text("");
+	}else {
+		validateInfo.html("Upewnij się czy wprowadzona <strong>data</strong> jest dniem dzisiejszym, a godzina <strong>rozpoczęścia</strong> <br>jest wcześniejszą niż <strong>zakończenia</strong> oraz czy już nie <strong>minęła.</strong>")
+		scrollTo(validateInfo);
 	}
 };
-
+function validateTime(sTime, eTime){	
+	sTime = sTime.split(":");
+	sTime = sTime[0]+sTime[1];
+	eTime = eTime.split(":");
+	eTime = eTime[0]+eTime[1];	
+	if(sTime < eTime){
+		return true;
+	}else{
+		return false;
+	}
+}
+function validateDate(inputDate, sTime){
+	let cdate = new Date();
+	sTime = sTime.split(":");
+	inputDate.setHours(sTime[0]);
+	inputDate.setMinutes(sTime[1]);
+	if(inputDate >= cdate){
+		return true;
+	}else{
+		return false;
+	}	
+}
+function scrollTo(target){
+	if( target.length ) {
+			event.preventDefault();
+			$('html, body').animate({
+				scrollTop: target.offset().top
+			}, 500);
+		}
+}
 function formatDate(date) {
     var month = date.getMonth()+1;
     var day = date.getDate();
