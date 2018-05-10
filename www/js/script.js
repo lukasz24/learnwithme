@@ -1,3 +1,8 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(navigator.notification);
+}
+
 function goToSite(id){  
   //window.location.href+='#' + id;
   var anch = document.createElement('a');
