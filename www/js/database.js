@@ -87,41 +87,48 @@ function formatDate(date) {
 function getAllAnn() {
 	var mainCont = $("#mainAll > div[data-role='main']");
 	mainCont.empty();
-	var allChilldAdded = database.child('classifieds/').on("child_added", function(data) {
-		var myAnn = [], myWatch =[];
+	mainCont.append('<p id="comAll">Przykro nam, ale nie ma obecnie dostępnych ogłoszeń :(<br>' +' Dodaj jakieś klikając przycisk + u dołu ekranu!</p>');
+			
+	var usId = firebase.auth().currentUser.uid;
+	var allChilldAdded = database.child('classifieds/').once("value", function(data) {
+		
 		
 		var newAnn = data.val();
-		var usId = firebase.auth().currentUser.uid;
+		
 		//database.child('users/' + firebase.auth().currentUser.uid + "/watched/" + data.key).once('value', function(snap) { myWatch = snap.val(); console.log(myWatch); });
-
+		
 		//database.child('users/' + firebase.auth().currentUser.uid + "/added/" + data.key).once('value', function(snap) { myAnn = snap.val(); console.log(myAnn); });
-		if(newAnn == null){
-			mainCont.append(' <p id="comAll">Przykro nam, ale nie ma obecnie dostępnych ogłoszeń :(<br>' +' Dodaj jakieś klikając przycisk + u dołu ekranu!</p>');
-		}	
-		var announInfo = "";
-		if(usId == newAnn.author){
-			announInfo = "<div class='container'  onclick='showMyAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
-			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
-		}else if(newAnn.followsBy != null && newAnn.followsBy.hasOwnProperty(usId)){
-			announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
-			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
-		}else{
-			announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + data.key + "\", \"#mainAll\")'><span class='annKey'>" + data.key + "</span><p class='infoAboutMeeting'>" +
-			newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
-			"<br>" + newAnn.place + "<br>" + newAnn.tags +  
-			"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
+		for(iter in newAnn){
+			console.log(iter);
+			
+			var announInfo = "";
+			if(usId == newAnn[iter].author){
+				announInfo = "<div class='container'  onclick='showMyAnnoun(\"" + iter + "\", \"#mainAll\")'><span class='annKey'>" + iter + "</span><p class='infoAboutMeeting'>" +
+				newAnn[iter].date + " " + newAnn[iter].startTime + "-" + newAnn[iter].endTime + 
+				"<br>" + newAnn[iter].place + "<br>" + newAnn[iter].tags +  
+				"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn[iter].followersNumb + "</p></div>";
+			}else if(newAnn[iter].followsBy != null && newAnn[iter].followsBy.hasOwnProperty(usId)){
+				announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + iter + "\", \"#mainAll\")'><span class='annKey'>" +iter + "</span><p class='infoAboutMeeting'>" +
+				newAnn[iter].date + " " + newAnn[iter].startTime + "-" + newAnn.endTime + 
+				"<br>" + newAnn[iter].place + "<br>" + newAnn[iter].tags +  
+				"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn[iter].followersNumb + "</p></div>";
+			}else{
+				announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + iter + "\", \"#mainAll\")'><span class='annKey'>" + iter + "</span><p class='infoAboutMeeting'>" +
+				newAnn[iter].date + " " + newAnn[iter].startTime + "-" + newAnn[iter].endTime + 
+				"<br>" + newAnn[iter].place + "<br>" + newAnn[iter].tags +  
+				"</p><img src='img/greyBook.png' class='bookic'/><p class='undimg'>" + newAnn[iter].followersNumb + "</p></div>";
+			}
+			
+			if(mainCont.is(':empty')){	
+							
+				mainCont.append(announInfo);
+				$('#comAll').hide();
+			}else{
+					
+				mainCont.children().first().before(announInfo);			
+				$('#comAll').hide();		
+			}
 		}
-		
-		if(mainCont.is(':empty')){				
-			mainCont.append(announInfo);
-		}else{
-			mainCont.children().first().before(announInfo);					
-		}
-		
 	});
 	
 	goToSite('mainAll');
