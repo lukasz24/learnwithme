@@ -26,49 +26,59 @@ $(document).ready(function(){
     const btnFBLogIn = $("#zalogujFB");
     const btnRegis = $("#zarejestruj");
     const logout = $("#wyloguj");
+    var info = $('#logInfo');
 
+    emailInput.on('focus', function(){
+		$(this).css("box-shadow", "none");
+	});
+    passInput.on('focus', function(){
+		$(this).css("box-shadow", "none");
+	});
     //EVENT LISTENER DO LOGOWANIA
     btnLogIn.on('click', function() {
         const email = emailInput.val();
         const passwd = passInput.val();
         const auth = firebase.auth();
         const promise = auth.signInWithEmailAndPassword(email, passwd);
-        var info = $('logInfo');
+        
         info.css("color", "red");
         promise.catch(e => {
-            console.log(e.code);
+            //console.log(e.code);
   		    switch (e.code){
             case "auth/invalid-email":
               info.text("Niepoprawny email!");
-              emailInput.css("border", "3px solid #ff7777");  					
+              emailInput.css("box-shadow", "2px 2px 2px red");  					
               console.log(e.code);
               break;
             case "auth/user-not-found":
               info.text("Niepoprawny email!");
-              emailInput.css("border", "3px solid #ff7777");  					
+              emailInput.css("box-shadow", "2px 2px 2px red");  					
               console.log(e.code);
               break;  				
             case "auth/email-already-in-use":
               info.text("Email jest już w użyciu!");
-              emailInput.css("border", "3px solid #ff7777");  
+              emailInput.css("box-shadow", "2px 2px 2px red");  
               console.log(e.code);
               break;
             case "auth/wrong-password":
               info.text("Niepoprawne hasło!");
-              passInput.css("border", "3px solid #ff7777");
+              passInput.css("box-shadow", "2px 2px 2px red");
               console.log(e.code);
               break;
+            case "":
+            info.html('Logowanie udane!');
+              getAllAnn();
+              info.text("");
+              emailInput.off('focus');
+    		  passInput.off('focus');
+              break;
             default:
-    				info.text("Nieokreślony błąd.");
-    				console.log(e.code);
-    				break;
+    		  info.text("Nieokreślony błąd.");
+    		  console.log(e.code);
+    		  break;
   			}
 
-		});
-		info.innerText = "";
-		passInput.css("border", "0px solid #ff7777");
-		emailInput.css("border", "0px solid #ff7777");
-		getAllAnn();
+		});		
 	});
     /*
   	//EVENT LISTENER DO PRZEJSCIA DO SERWISU
@@ -189,6 +199,7 @@ $(document).ready(function(){
         }
     });
 
+
   /*
     //EVENT LISTENER DO WYLOGOWANIA
     logout.addEventListener('click', function(){
@@ -201,6 +212,16 @@ $(document).ready(function(){
     });
     */
 });
+
+function logout(){
+    	firebase.auth().signOut()
+            .then(function() {
+                console.log('Signout Succesfull');
+                goToSite('startPage');
+            }, function(error) {
+                console.log('Signout Failed')
+            });
+    }
 
 function getChartData() {
   var database = firebase.database().ref();  

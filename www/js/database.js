@@ -168,7 +168,7 @@ function getAllAnn() {
 				"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + g[iter].followersNumb + "</p></div>";
 			}else if(g[iter].followsBy != null && g[iter].followsBy.hasOwnProperty(usId)){
 				announInfo = "<div class='container'  onclick='showThisAnnoun(\"" + g[iter].key + "\", \"#mainAll\")'><span class='annKey'>" + g[iter].key + "</span><p class='infoAboutMeeting'>" +
-				g[iter].date + " " + g[iter].startTime + "-" + g.endTime + 
+				g[iter].date + " " + g[iter].startTime + "-" + g[iter].endTime + 
 				"<br>" + g[iter].place + "<br>" + g[iter].tags +  
 				"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + g[iter].followersNumb + "</p></div>";
 			}else{
@@ -325,6 +325,8 @@ function showThisAnnoun(key, back){
 			//console.log(myWatch);		
 			if(myWatchKey != null){
 				$('#imgDetails').attr('src', 'img/greenBook-big.png');
+			}else{
+				$('#imgDetails').attr('src', 'img/128greybook.png');
 			}
 		});				
 	});
