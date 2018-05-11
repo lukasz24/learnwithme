@@ -106,7 +106,7 @@
                     <p style="margin-top: -20px; margin-left: 70px">Meeting platform</p>
                     <ul style="list-style: none; transform: translateX(-40px);">
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-alerts ui-btn-icon-left sideMenuButton" onclick="goToSite('notice')">Powiadomienia</button></li>
-                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage')">Statystyki</button></li>
+                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage');getChartData()">Statystyki</button></li>
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-authors ui-btn-icon-left sideMenuButton" onclick="goToSite('authors')">Autorzy</button></li>
                         <hr />
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-editUser ui-btn-icon-left sideMenuButton" onclick="goToSite('profileSettingsPage')">Edytuj Profil</button></li>
@@ -144,7 +144,7 @@
                     <p style="margin-top: -20px; margin-left: 70px">Meeting platform</p>
                     <ul style="list-style: none; transform: translateX(-40px);">
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-alerts ui-btn-icon-left sideMenuButton" onclick="goToSite('notice')">Powiadomienia</button></li>
-                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage')">Statystyki</button></li>
+                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage');getChartData()">Statystyki</button></li>
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-authors ui-btn-icon-left sideMenuButton" onclick="goToSite('authors')">Autorzy</button></li>
                         <hr />
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-editUser ui-btn-icon-left sideMenuButton" onclick="goToSite('profileSettingsPage')">Edytuj Profil</button></li>
@@ -182,7 +182,7 @@
                     <p style="margin-top: -20px; margin-left: 70px">Meeting platform</p>
                     <ul style="list-style: none; transform: translateX(-40px);">
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-alerts ui-btn-icon-left sideMenuButton" onclick="goToSite('notice')">Powiadomienia</button></li>
-                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage')">Statystyki</button></li>
+                        <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-statistics ui-btn-icon-left sideMenuButton" onclick="goToSite('chartPage');getChartData()">Statystyki</button></li>
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-authors ui-btn-icon-left sideMenuButton" onclick="goToSite('authors')">Autorzy</button></li>
                         <hr />
                         <li><button class="ui-btn ui-corner-all ui-btn-inline ui-btn-mini ui-icon-editUser ui-btn-icon-left sideMenuButton" onclick="goToSite('profileSettingsPage')">Edytuj Profil</button></li>
@@ -395,21 +395,20 @@
         </div>
 
        <!-- Statistic page -->
-        <div data-role="page" id="chartPage">
+        <div data-role="page" id="chartPage" >
             <div data-role="header" class="header">
                 <a href="#mainAll" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext backbutt"></a>
                 <h1>Statystyki</h1>
             </div>
           
             <div data-role="main" class="ui-content">
-                Wykres przedstawia 6 najpopularniejszych tagów użytych w ogłoszeniach dodawanych przez użytkowników.
+                Wykres przedstawia ilość ogłoszeń dodanych przez użykowników w ciągu ostatnich 7 dni.
                 <div id="chDiv">
                     <canvas id="chart" width="100%" height="100%"></canvas>
                 </div>
             </div>
 
-            <div data-role="footer" data-position="fixed" id="footerEditProfile">
-                      <button id="aaa" onclick="chartClick()">Wygeneruj wykres</button>  
+            <div data-role="footer" data-position="fixed">        
             </div>
         </div>
     </body>
