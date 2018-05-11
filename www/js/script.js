@@ -93,10 +93,10 @@ $(document).ready(function(){
 	*/
     //EVENT LISTENER DO LOGOWANIA PRZEZ GOOGLE
     btnGLogIn.on('click', function() {
-        var info = $('#info');
-        var provider = new firebase.auth.GoogleAuthProvider();
+        
+        	
         info.html("Próba logowania do Google...");
-
+        var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider).then(function() {
             return firebase.auth().getRedirectResult();
         }).then(function(result) {
