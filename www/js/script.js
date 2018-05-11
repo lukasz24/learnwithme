@@ -42,6 +42,7 @@ $(document).ready(function(){
         const promise = auth.signInWithEmailAndPassword(email, passwd);
         
         info.css("color", "red");
+
         promise.catch(e => {
             //console.log(e.code);
   		    switch (e.code){
@@ -67,18 +68,22 @@ $(document).ready(function(){
               break;
             case "":
             info.html('Logowanie udane!');
-              getAllAnn();
-              info.text("");
-              emailInput.off('focus');
-    		  passInput.off('focus');
+              
               break;
             default:
     		  info.text("Nieokreślony błąd.");
     		  console.log(e.code);
     		  break;
   			}
-
-		});		
+  			
+		});	
+		promise.then(function(res){
+			//console.log(res);
+			getAllAnn();
+            info.text("");
+            emailInput.val('').off('focus');
+    	 	passInput.val('').off('focus');
+		});
 	});
     /*
   	//EVENT LISTENER DO PRZEJSCIA DO SERWISU
