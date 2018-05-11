@@ -46,6 +46,7 @@ var addAnnoun = function() {
 		placeAnnS.length == 0 || descriptionS.length == 0) {
 		console.log("Nie wszystkie pola są wypełnione!");
 		validateInfo.text("Proszę uzupełnić puste pola!");
+		scrollTo(validateInfo);
 	} else if(validateTime(startTimeS, endTimeS) && validateDate(new Date(dateAnn.val()), startTimeS)) {
 		var announData = {
 			tags: tagiS,
@@ -75,7 +76,7 @@ var addAnnoun = function() {
 		placeAnn.text("");
 		description.text("");
 		validateInfo.text("");
-		dateAnn.of('focus');
+		dateAnn.off('focus');
 		startTime.off('focus');
 		endTime.off('focus');
 	}else {
@@ -130,12 +131,18 @@ function formatDate(date) {
 }
 
 function getAllAnn() {
+	cordova.plugins.notification.local.schedule({
+    title: 'My first notification',
+    text: 'Thats pretty easy...',
+    foreground: true
+	});
 	var mainCont = $("#mainAll > div[data-role='main']");
 	mainCont.empty();
 	mainCont.append('<p id="comAll">Przykro nam, ale nie ma obecnie dostępnych ogłoszeń :(<br>' +' Dodaj jakieś klikając przycisk + u dołu ekranu!</p>');
 			
 	var usId = firebase.auth().currentUser.uid;
-	var allChilldAdded = database.child('classifieds/').orderByChild("active").equalTo(true).once("value", function(data) {
+	var allChilldAdded = database.child('classifieds/');
+	allChilldAdded.orderByChild("active").equalTo(true).once("value", function(data) {
 		var newAnn = data.val();
 		for(iter in newAnn){			
 			var announInfo = "";
@@ -185,7 +192,7 @@ function getMyAnn() {
 					database.child('classifieds/' + iter).once("value").then(function(snapshot) {
 						var newAnn = snapshot.val();				
 						if(newAnn.active){
-							var content = "<div class='container' onclick='showMyAnnoun(\"" + iter + "\", \"#mainAdd\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+							var content = "<div class='container' onclick='showMyAnnoun(\"" + snapshot.key + "\", \"#mainAdd\")'><span class='annKey'>" + snapshot.key + "</span><p class='infoAboutMeeting'>" +
 							newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 									"<br>" + newAnn.place + "<br>" + newAnn.tags +  
 									"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
@@ -216,7 +223,7 @@ function getMyWatched() {
 				database.child('classifieds/' + iter).once("value").then(function(snapshot) {				
 					var newAnn = snapshot.val();
 					if(newAnn.active){
-						var contentWat = "<div class='container' onclick='showThisAnnoun(\"" + iter + "\", \"#mainWatched\")'><span class='annKey'>" + announ + "</span><p class='infoAboutMeeting'>" +
+						var contentWat = "<div class='container' onclick='showThisAnnoun(\"" + snapshot.key + "\", \"#mainWatched\")'><span class='annKey'>" + snapshot.key + "</span><p class='infoAboutMeeting'>" +
 							newAnn.date + " " + newAnn.startTime + "-" + newAnn.endTime + 
 							"<br>" + newAnn.place + "<br>" + newAnn.tags +  
 							"</p><img src='img/greenBook.png' class='bookic'/><p class='undimg'>" + newAnn.followersNumb + "</p></div>";
@@ -245,6 +252,9 @@ function showThisAnnoun(key, back){
 			$('#detailBackWat').show();
 			$('#detailBackAll').hide();
 			break;
+		default:
+			$('#detailBackAll').show();
+			$('#detailBackWat').hide();
 	}
 	var annKey = key;
 	var usId = firebase.auth().currentUser.uid;
@@ -310,4 +320,51 @@ function toogleWatch(){
 			$('#imgDetails').attr('src', 'img/128greybook.png');
 		}		
 	});
+}
+
+function showMyAnnoun(key, back){
+	switch(back){
+		case '#mainAll':
+			$('#myDetailBackAll').show();
+			$('#myDetailBackMy').hide();
+			break;
+		case '#mainAdd':
+			$('#myDetailBackMy').show();
+			$('#myDetailBackAll').hide();
+			break;
+		default:
+			$('#myDetailBackAll').show();
+			$('#myDetailBackMy').hide();
+	}
+	var myAnnKey = key;
+	var myId = firebase.auth().currentUser.uid;
+	goToSite('MyAnnDetailsPage');	
+	//$('#detailBack').attr('href', back);
+	$('#myAnnKeyDetail').text(myAnnKey);
+	var myWatchKey = [];
+	database.child('classifieds/' + myAnnKey).once("value").then(function(snapshot) {
+		//console.log(snapshot.val());
+		var myAnnKey = snapshot.val();
+		database.child('users/' + myAnnKey.author).once("value").then(function(snapshot) {$('#usersAnnMyDetails').text('Ogłoszenie użytkownika ' + snapshot.val().name);});
+		$('#dateMyDetails').text(myAnnKey.date);				
+		$('#startTimeMyDetails').text(myAnnKey.startTime);
+		$('#endTimeMyDetails').text(myAnnKey.endTime);
+		$('#placeMyDetails').text(myAnnKey.place);
+		$('#descMyDetails').text(myAnnKey.description);
+		$('#tagsMyDetails').text(myAnnKey.tags);
+		$('#myFollowersNumb').text(myAnnKey.followersNumb);
+		//database.child('users/' + usId + "/watched/" + key).on('value', function(snap) { myAnn = snap.val(); });				
+	});
+}
+
+function changeStatus(back){
+	var newKey = $('#myAnnKeyDetail').text();
+	database.child('/classifieds/' + newKey).update({active: false});
+	switch (back){
+		case '#MyAnnDetailsPage':
+			showMyAnnoun(newKey);
+		default:
+		getMyAnn();
+	}
+	
 }
