@@ -303,7 +303,7 @@ function showThisAnnoun(key, back){
 	}
 	var annKey = key;
 	var usId = firebase.auth().currentUser.uid;
-	goToSite('AnnDetailsPage');	
+	goToSite('annDetailsPage');	
 	//$('#detailBack').attr('href', back);
 	$('#annKeyDetail').text(annKey);
 	var myWatchKey = [];
