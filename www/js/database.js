@@ -383,7 +383,7 @@ function showMyAnnoun(key, back){
 	}
 	var myAnnKey = key;
 	var myId = firebase.auth().currentUser.uid;
-	goToSite('MyAnnDetailsPage');	
+	goToSite('myAnnDetailsPage');	
 	//$('#detailBack').attr('href', back);
 	$('#myAnnKeyDetail').text(myAnnKey);
 	var myWatchKey = [];
