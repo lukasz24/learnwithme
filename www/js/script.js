@@ -259,3 +259,15 @@ function chartClick(dbData, days){
     }
   });
 }
+
+function sendMail()
+{
+  alert('Wszelkie problemy i pytania proszę zgłaszać na adres e-mail: pomoc@pomoc.com');
+  /* not working, not sure why
+  navigator.notification.alert(
+    'Wszelkie problemy i pytania proszę zgłaszać na adres e-mail: pomoc@pomoc.com', 
+    null, 
+    "Kontakt", 
+    "Ok");
+  */
+}
