@@ -9,6 +9,7 @@
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
         <script src="js/Chart.min.js"></script>
         <script src="js/Chart.bundle.min.js"></script>
     </head>
@@ -84,7 +85,8 @@
 					</p>
 				</div>
 				<img src="img/downarr.png" id="downArrow"/>
-				<a href="#mainAll" class="ui-btn ui-corner-all" id="przejdzDoSerwisu">Przejdź do serwisu</a>
+
+				<button class="ui-btn ui-corner-all" id="przejdzDoSerwisu" onclick="getAllAnn()">Przejdź do serwisu</button>
             </div>
         </div>
 
@@ -95,8 +97,8 @@
                 <h1 id="mainAllHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtns" class="btn-group">
                   <button class="ui-btn" id="all">Ogłoszenia</button>
-                  <button class="ui-btn" id="added" onclick="goToSite('mainAdd')">Dodane</button>
-                  <button class="ui-btn" id="watched" onclick="goToSite('mainWatched')">Obserwowane</button>
+                  <button class="ui-btn" id="added" onclick="getMyAnn()">Dodane</button>
+                  <button class="ui-btn" id="watched" onclick="getMyWatched()">Obserwowane</button>
                 </div>  
             </div>
                     
@@ -122,8 +124,8 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmain">
-                <button id="dodajBtn" onclick="goToSite('addAnnoun')">+</button>               
-            </div>
+                <button id="dodajBtn" onclick="addNewAnn()">+</button> 
+          </div>
         </div>
 
         <!-- Main page - added -->
@@ -132,12 +134,11 @@
                 <a href="#sideMenu1" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn" data-role="button" role="button"></a>
                 <h1 id="mainAddHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsAd" class="btn-group">
-                  <button class="ui-btn" id="allAd" onclick="goToSite('mainAll')">Ogłoszenia</button>
+                  <button class="ui-btn" id="allAd" onclick="getAllAnn()">Ogłoszenia</button>
                   <button class="ui-btn" id="addedAd">Dodane</button>
-                  <button class="ui-btn" id="watchedAd" onclick="goToSite('mainWatched')">Obserwowane</button>
+                  <button class="ui-btn" id="watchedAd" onclick="getMyWatched()">Obserwowane</button>
                 </div>
             </div>
-
             <div data-role="panel" id="sideMenu1" data-position="left" data-display="overlay" data-theme="a" class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open">
                 <div class="ui-panel-inner">
                     <h2 style="margin-left: 70px"><img src="img/logo.png" class="menuLogo"/>LearnWithMe</h2>
@@ -160,7 +161,7 @@
             </div>
 
             <div data-role="footer" data-position="fixed" id="footmainAd">
-                <button id="dodajBtnAd" onclick="goToSite('addAnnoun')">+</button>               
+                <button id="dodajBtnAd" onclick="addNewAnn()">+</button> 
             </div>
         </div>
 
@@ -170,8 +171,8 @@
                 <a href="#sideMenu2" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext menubtn" data-role="button" role="button"></a>
                 <h1 id="mainWatchHeader">LearnWithMe</h1>
                 <div data-role="controlgroup" id="controlBtnsWat" class="btn-group">
-                  <button class="ui-btn" id="allWat" onclick="goToSite('mainAll')">Ogłoszenia</button>
-                  <button class="ui-btn" id="addedWat" onclick="goToSite('mainAdd')">Dodane</button>
+                  <button class="ui-btn" id="allWat" onclick="getAllAnn()">Ogłoszenia</button>
+                  <button class="ui-btn" id="addedWat" onclick="getMyAnn()">Dodane</button>
                   <button class="ui-btn" id="watchedWat">Obserwowane</button>
                 </div>
             </div>
@@ -192,12 +193,10 @@
                 </div>
             </div>
           
-            <div data-role="main" class="ui-content">
-                <p id="comWatched">Nie obserwujesz obecnie żadnych ogłoszeń.<br>Wróć do widoku wszystkich ogłoszeń, wybierz najbardziej interesujące, przejdź do szczegółów i kliknij ikonę książki, aby dodać to ogłoszenie do obserwowanych.</p>
-            </div>
+            <div data-role="main" class="ui-content"></div>
 
             <div data-role="footer" data-position="fixed" id="footmainWat">
-                <button id="dodajBtnWat" onclick="goToSite('addAnnoun')">+</button>               
+                <button class="dodajBtn" onclick="addNewAnn()">+</button>
             </div>
         </div>
 
@@ -210,29 +209,30 @@
           
             <div data-role="main" class="ui-content">
                 <div>
+                    <p id="newAnnInfo"></p>
                     Tagi
-                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn"/>
+                    <input type="text" placeholder="np. matematyka, programowanie" id="tagsNewAnn" required />
                     <hr>
                     Data
-                    <input type="date" placeholder="01-01-2018" id="dateNewAnn"/>
+                    <input type="date" placeholder="01-01-2018" id="dateNewAnn" required/>
                     <hr>
                     Godzina ropoczęcia
-                    <input type="time" placeholder="9:35" id="startTimeNewAnn"/>
+                    <input type="time" placeholder="9:35" id="startTimeNewAnn" required/>
                     <hr>
                     Godzina zakończenia
-                    <input type="time" placeholder="11:35" id="endTimeNewAnn"/>
+                    <input type="time" placeholder="11:35" id="endTimeNewAnn" required/>
                     <hr>
                     Miejsce
-                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn"/>
+                    <input type="text" placeholder="np. Paw. A, piętro 2" id="placeNewAnn" required/>
                     <hr>
                     Krótki opis (max. 150 znaków)
-                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania"></textarea> 
+                    <textarea name="descNewAnn" maxlength="150" rows="6" placeholder="Opisz krótko cel spotkania" id="descriptionAnn" required></textarea>
                     <hr>
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="footerNewAnn">
                 <button class="ui-btn" id="cancBtnNewAnn" onclick="goToSite('mainAll')">Anuluj</button> 
-                <button class="ui-btn" id="addBtnNewAnn" onclick="">Dodaj</button> 
+                <button class="ui-btn" id="addBtnNewAnn" onclick="addAnnoun()">Dodaj</button>
             </div>
         </div>
 
@@ -266,53 +266,58 @@
                 </div>
             </div>
             <div data-role="footer" data-position="fixed" id="footerEditAnn">
-                <button class="ui-btn" id="deleteBtnEditAnn" onclick="">Odwołaj</button> 
-                <button class="ui-btn" id="cancBtnEditAnn" onclick="goToSite('mainAll')">Anuluj</button> 
-                <button class="ui-btn" id="saveBtnEditAnn" onclick="">Zapisz zmiany</button>               
+                <button class="ui-btn" id="deleteBtnEditAnn"  onclick="changeStatus('MyAnnDetailsPage')">Odwołaj</button> 
+                <button class="ui-btn" id="cancBtnEditAnn" onclick="goToSite('MyAnnDetailsPage')">Anuluj</button> 
+                <button class="ui-btn" id="saveBtnEditAnn">Zapisz zmiany</button>
             </div>
         </div>
         
         <!-- Announcement details page -->
         <div data-role="page" id="annDetailsPage">
             <div data-role="header" class="header">
-                <a href="#mainAll" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt"></a>
+                <button  id="detailBackAll" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt" onclick="getAllAnn()"></button>
+                <button  id="detailBackWat" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt" onclick="getMyWatched()"></button>
                 <h1>Ogłoszenie</h1>
                 <h2 id="usersAnnDetails">Ogłoszenie użytkownika X</h2>
+                <span class="annKey" id="annKeyDetail"></span>
             </div>
           
             <div data-role="main">
                 <div id="infosDetails">
-                    Data: <span id="dateDetails">12.04</span><br>
-                    Godziny: <span id="startTimeDetails">9:35</span> - <span id="endTimeDetails">11:45</span><br>
-                    Miejsce: <span id="placeDetails">Paw. A, piętro 2</span><br>
-                    Opis: <span id="descDetails">Krótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opis</span><br>
-                    Tagi: <span id="tagsDetails">matematyka</span>
+                    <p>Data: <span id="dateDetails"></span></p>
+                    <p>Godziny: <span id="startTimeDetails"></span> - <span id="endTimeDetails"></span></p>
+                    <p>Miejsce: <span id="placeDetails"></span></p>
+                    <p>Opis: <span id="descDetails"></span></p>
+                    <p>Tagi: <span id="tagsDetails"></span></p>
+                    <p >Obserwatorzy: <span id="followersNumb"></span></p>
                 </div>
-                <img src="img/128greybook.png" id="imgDetails"/>
+                <button id="btnDetails" onclick="toogleWatch()"><img src="img/128greybook.png" id="imgDetails"></button>
             </div>
         </div>
 
         <!-- My announcement details page -->
         <div data-role="page" id="myAnnDetailsPage">
             <div data-role="header" class="header">
-                <a href="#mainAll" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt"></a>
+                <button  id="myDetailBackAll" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt" onclick="getAllAnn()"></button>
+                <button  id="myDetailBackMy" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext backbutt" onclick="getMyAnn()"></button>
                 <h1>Ogłoszenie</h1>
-                <h2 id="usersAnnMyDetails">Ogłoszenie użytkownika X</h2>
+                <h2 id="usersAnnMyDetails"></h2>
+                <span class="annKey" id="myAnnKeyDetail"></span>
             </div>
           
             <div data-role="main">
                 <div id="infosMyDetails">
-                    Data: <span id="dateMyDetails">12.04</span><br>
-                    Godziny: <span id="startTimeMyDetails">9:35</span> - <span id="endTimeMyDetails">11:45</span><br>
-                    Miejsce: <span id="placeMyDetails">Paw. A, piętro 2</span><br>
-                    Opis: <span id="descMyDetails">Krótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opisKrótki opis</span><br>
-                    Tagi: <span id="tagsMyDetails">matematyka</span>
+                    Data: <span id="dateMyDetails"></span><br>
+                    Godziny: <span id="startTimeMyDetails"></span> - <span id="endTimeMyDetails"></span><br>
+                    Miejsce: <span id="placeMyDetails"></span><br>
+                    Opis: <span id="descMyDetails"></span><br>
+                    Tagi: <span id="tagsMyDetails"></span>
                 </div>
             </div>
 
             <div data-role="footer" data-position="fixed" id="myDetailsFooter">
-                <button class="ui-btn" id="odwolaj" onclick="">Odwołaj</button>  
-                <button class="ui-btn" id="edytuj" onclick="goToSite('editAnnoun')">Edytuj</button>                
+                <button class="ui-btn" id="odwolaj"  onclick="changeStatus()">Odwołaj</button>  
+                <button class="ui-btn" id="edytuj" onclick="alert('Cholerka, coś tutaj nie działa! :(')">Edytuj</button>
             </div>
         </div>
       

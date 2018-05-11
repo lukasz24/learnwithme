@@ -19,18 +19,18 @@ function goToSite(id){
 }());
 
 $(document).ready(function(){
-    const emailInput = document.getElementById('email');
-    const passInput = document.getElementById('haslo');
-    const btnLogIn = document.getElementById('zaloguj');
-    const btnGLogIn = document.getElementById("zalogujG");
-    const btnFBLogIn = document.getElementById("zalogujFB");
-    const btnRegis = document.getElementById("zarejestruj");
-    const logout = document.getElementById("wyloguj");
+    const emailInput = $('#email');
+    const passInput = $('#haslo');
+    const btnLogIn = $('#zaloguj');
+    const btnGLogIn = $("#zalogujG");
+    const btnFBLogIn = $("#zalogujFB");
+    const btnRegis = $("#zarejestruj");
+    const logout = $("#wyloguj");
 
     //EVENT LISTENER DO LOGOWANIA
-    btnLogIn.addEventListener('click', function() {
-        const email = emailInput.value;
-        const passwd = passInput.value;
+    btnLogIn.on('click', function() {
+        const email = emailInput.val();
+        const passwd = passInput.val();
         const auth = firebase.auth();
         const promise = auth.signInWithEmailAndPassword(email, passwd);
         var info = document.getElementById('logInfo');
@@ -38,43 +38,49 @@ $(document).ready(function(){
         promise.catch(e => {
             console.log(e.code);
   		    switch (e.code){
-  				case "auth/invalid-email":
-  					info.innerText = "Niepoprawny email!";
-  					emailInput.style.border = "3px solid #ff7777";  					
-  					console.log(e.code);
-  					break;
-  				case "auth/user-not-found":
-  					info.innerText = "Niepoprawny email!";
-  					emailInput.style.border = "3px solid #ff7777";  					
-  					console.log(e.code);
-  					break;  				
-  				case "auth/email-already-in-use":
-  					info.innerText = "Email jest już w użyciu!";
-  					emailInput.style.border = "3px solid #ff7777";  
-  					console.log(e.code);
-  					break;
-  				case "auth/wrong-password":
-  					info.innerText = "Niepoprawne hasło!"
-  					passInput.style.border = "3px solid #ff7777";
-  					console.log(e.code);
-  					break;
-  				default:
+            case "auth/invalid-email":
+              info.innerText = "Niepoprawny email!";
+              emailInput.style.border = "3px solid #ff7777";  					
+              console.log(e.code);
+              break;
+            case "auth/user-not-found":
+              info.innerText = "Niepoprawny email!";
+              emailInput.style.border = "3px solid #ff7777";  					
+              console.log(e.code);
+              break;  				
+            case "auth/email-already-in-use":
+              info.innerText = "Email jest już w użyciu!";
+              emailInput.style.border = "3px solid #ff7777";  
+              console.log(e.code);
+              break;
+            case "auth/wrong-password":
+              info.innerText = "Niepoprawne hasło!";
+              passInput.style.border = "3px solid #ff7777";
+              console.log(e.code);
+              break;
+            default:
     				info.innerText = "Nieokreślony błąd.";
     				console.log(e.code);
     				break;
   			}
-  	    });
-        info.innerText = "";
-        passInput.style.border = "0px solid #ff7777";
-        emailInput.style.border = "0px solid #ff7777";
 
-    });
+		});
+		info.innerText = "";
+		passInput.style.border = "0px solid #ff7777";
+		emailInput.style.border = "0px solid #ff7777";
+		getAllAnn();
+	});
+
+  	//EVENT LISTENER DO PRZEJSCIA DO SERWISU
+	  continueBtn.on('click', function() {
+        getAllAnn();
+    });	  
 
     //EVENT LISTENER DO LOGOWANIA PRZEZ GOOGLE
     btnGLogIn.addEventListener('click', function() {
-        var info = document.getElementById('info');
+        var info = $('#info');
         var provider = new firebase.auth.GoogleAuthProvider();
-        info.innerHTML = "Próba logowania do Google...";
+        info.html("Próba logowania do Google...");
 
         firebase.auth().signInWithRedirect(provider).then(function() {
             return firebase.auth().getRedirectResult();
@@ -89,8 +95,8 @@ $(document).ready(function(){
     });
 
     //EVENT LISTENER DO LOGOWANIA PRZEZ GOOGLE
-    btnFBLogIn.addEventListener('click', function() {
-        info.innerHTML = "Próba logowania do FB...";
+    btnFBLogIn.on('click', function() {
+        info.html("Próba logowania do FB...");
         var provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().useDeviceLanguage();
         firebase.auth().signInWithRedirect(provider).then(function() {
@@ -106,58 +112,73 @@ $(document).ready(function(){
     });
 
     //EVENT LISTENER DO REJESTRACJI
-    btnRegis.addEventListener('click', function() {
-  	 	const emailRegInput = document.getElementById('emailreg');
-  	 	const emailReg = emailRegInput.value;
-  	 	const passwdReg1Input = document.getElementById('hasloreg');
-  	 	const passwdReg1 = passwdReg1Input.value;
-  	 	const passwdReg2Input = document.getElementById('haslopowtreg');
-  	 	const passwdReg2 = passwdReg2Input.value;
-  	 	var info = document.getElementById('regInfo');
-  	 	info.style.color = "red";
-  	 	if(passwdReg1 === passwdReg2){
-  	 	    const auth = firebase.auth();
-  	 	    const promise = auth.createUserWithEmailAndPassword(emailReg, passwdReg1);
-            promise.catch(e => {
-                switch (e.code){
-                    case "auth/invalid-email":
-                        info.innerText = "Niepoprawny email!";
-                        emailRegInput.style.border = "3px solid #ff7777";
-                        console.log(e.code);
-                        break;
-                    case "auth/weak-password":
-                        info.innerText = "Hasło musi zawierać co najlniej 6 znaków!";
-                        passwdReg1Input.style.border = "3px solid #ff7777";
-                        passwdReg2Input.style.border = "3px solid #ff7777";
-                        console.log(e.code);
-                        break;
-                    case "auth/email-already-in-use":
-                        info.innerText = "Email jest już w użyciu!";
-                        emailRegInput.style.border = "3px solid #ff7777";
-                        passwdReg1Input.style.border = "0px solid #ff7777";
-                        passwdReg2Input.style.border = "0px solid #ff7777";
-                        console.log(e.code);
-                        break;
-                    default:
-                        info.innerText = "Nieokreślony błąd.";
-                        console.log(e.code);
-                        break;
-                }
-            });
-            promise.then(function() {
-                info.innerText = "";
-                emailRegInput.style.border = "0px solid #ff7777";
-                passwdReg1Input.style.border = "0px solid #ff7777";
-                passwdReg2Input.style.border = "0px solid #ff7777";
-                goToSite('afterRegPage');
-            });
-        } else {
-            console.log("Hasła są niepoprawne");
-            info.innerText = "Hasła nie są identyczne!";
-            passwdReg1Input.style.border = "3px solid #ff7777";
-            passwdReg2Input.style.border = "3px solid #ff7777";
-        }
-    });
+	btnRegis.on('click', function() {		
+		var nickReg = $('#nickreg').value;
+		const emailRegInput = $('#emailreg');
+		const emailReg = emailRegInput.value;
+		const passwdReg1Input = $('#hasloreg');
+		const passwdReg1 = passwdReg1Input.value;
+		const passwdReg2Input = $('#haslopowtreg');
+		const passwdReg2 = passwdReg2Input.value;
+		if (nickReg == null || nickReg == "") {
+		    nickReg = emailReg.substring(0, emailReg.indexOf('@'));
+	    }
+		var info = document.getElementById('regInfo');
+		info.style.color = "red";
+		if (passwdReg1 === passwdReg2) {
+			const auth = firebase.auth();
+			const promise = auth.createUserWithEmailAndPassword(emailReg, passwdReg1);
+			promise.catch(e => {
+				switch (e.code){
+					case "auth/invalid-email":
+						info.innerText = "Niepoprawny email!";
+						emailRegInput.style.border = "3px solid #ff7777";
+						console.log(e.code);
+						break;
+					case "auth/weak-password":
+						info.innerText = "Hasło musi zawierać co najlniej 6 znaków!";
+						passwdReg1Input.style.border = "3px solid #ff7777";
+						passwdReg2Input.style.border = "3px solid #ff7777";
+						console.log(e.code);
+						break;
+					case "auth/email-already-in-use":
+						info.innerText = "Email jest już w użyciu!";
+						emailRegInput.style.border = "3px solid #ff7777";
+						passwdReg1Input.style.border = "0px solid #ff7777";
+						passwdReg2Input.style.border = "0px solid #ff7777";
+						console.log(e.code);
+						break;
+					default:
+						info.innerText = "Nieokreślony błąd.";
+						console.log(e.code);
+						break;
+				}
+			});
+			promise.then(function(){
+				info.innerText = "";
+				emailRegInput.style.border = "0px solid #ff7777";
+				passwdReg1Input.style.border = "0px solid #ff7777";
+				passwdReg2Input.style.border = "0px solid #ff7777";
+				addUserToDB(emailReg, nickReg, firebase.auth().currentUser.uid);
+				goToSite('afterRegPage');
+			});
+		} else {
+			console.log("Hasła są niepoprawne");
+			info.innerText = "Hasła nie są identyczne!";
+			passwdReg1Input.style.border = "3px solid #ff7777";
+			passwdReg2Input.style.border = "3px solid #ff7777";
+		}
+	});
+  
+  function addUserToDB(email, nick, userKey){	
+    var userData = {
+      email: email,
+      name: nick,
+      watched: [],
+      added: []
+    };
+    firebase.database().ref().child('users/' + userKey).set(userData);
+  }
 
     //EVENT LISTENER ZMIANY STATUSU ZALOGOWANIA
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -168,6 +189,7 @@ $(document).ready(function(){
         }
     });
 
+  /*
     //EVENT LISTENER DO WYLOGOWANIA
     logout.addEventListener('click', function(){
         firebase.auth().signOut()
@@ -177,6 +199,7 @@ $(document).ready(function(){
                 console.log('Signout Failed')
             });
     });
+    */
 });
 
 function getChartData() {
@@ -270,4 +293,5 @@ function sendMail()
     "Kontakt", 
     "Ok");
   */
+
 }

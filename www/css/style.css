@@ -153,18 +153,18 @@ body {
 
 }
 
-#dodajBtn, #dodajBtnAd, #dodajBtnWat {
-    position: absolute;
+.dodajBtn{
+    position: absolute !important;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(50, 50, 50, 0.5);
-    height: 60px;
-    width: 60px;
-    border-radius: 50px;
+    background-color: rgba(50, 50, 50, 0.5) !important;
+    height: 60px !important;
+    width: 60px !important;
+    border-radius: 50px !important;
     border: 0 !important;
-    color: #ffffff;
+    color: #ffffff !important;
     padding: 0px;
-    font-size: 40px;
+    font-size: 40px !important;
 }
 
 #footmain, #footmainAd, #footmainWat {
@@ -176,15 +176,17 @@ body {
     background-color: #5F7C9F;
 }
 
-#container, #containerAd, #containerWat {
+.container{
     width: 100%;
-    height: 80px;
+    height: 90px;
     background-color: #ffffff;
     position: relative;
     border-radius: 15px;
+    padding-top: 01px;
+    margin-bottom: 10px;
 }
 
-#bookic, #bookicAd, #bookicWat {
+.bookic{
     position: absolute;
     top: 0;
     right: 0;
@@ -194,7 +196,7 @@ body {
     margin-right: 15px
 }
 
-#undimg, #undimgAd, #undimgWat {
+.undimg{
     position: absolute;
     top: 55%;
     right: 40px;
@@ -202,8 +204,8 @@ body {
     text-align: right;
 }
 
-#infoAboutMeeting, #infoAboutMeetingAd, #infoAboutMeetingWat {
-    margin-left: 5px;
+.infoAboutMeeting{
+    margin-left: 10px;
 }
 
 #usersAnnDetails, #usersAnnMyDetails {
@@ -217,12 +219,13 @@ body {
     margin-right: 15px;
 }
 
-#imgDetails {
+#btnDetails {
     position: absolute;
     float: right;
-    right: 10%;
-    bottom: 10%;
-    width: 30%;
+    right: 20px;
+    bottom: 20px;
+    width: 45%;
+
 }
 
 #myDetailsFooter {
@@ -356,6 +359,15 @@ body {
     text-indent: 15px;
 }
 
+.annKey {
+    display: none;
+
+}
+
+#detailBackWat, #myDetailBackMy {
+    position: relative;
+    left: 0px;
+}
 #saveChangesEditProfile {
     width: 90%;
     font-size: 15px;
@@ -486,3 +498,4 @@ body {
     right: 0;
     bottom: 0;
 }
+
