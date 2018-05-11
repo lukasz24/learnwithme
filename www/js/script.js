@@ -260,7 +260,7 @@ function getYesterdayDate(yesDay){
   if(mm<10){
     mm='0'+mm;
   } 
-  let propFormat = dd + '-' + mm + '-' + yyyy;
+  let propFormat = yyyy + '-' + mm + '-' + dd;
   return propFormat;
 }
 
