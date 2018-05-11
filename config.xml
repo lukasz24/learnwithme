@@ -42,7 +42,11 @@
         <variable name="APP_NAME" value="APP_NAME" />
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
-    
+
+    <gap:plugin name="cordova-plugin-x-toast" source="npm" />
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
     
 
 </widget>

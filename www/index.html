@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
         <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="js/Toast.js"></script>
         <script src="js/jquery-2.1.4.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
@@ -12,6 +13,7 @@
         <script type="text/javascript" src="js/database.js"></script>
         <script src="js/Chart.min.js"></script>
         <script src="js/Chart.bundle.min.js"></script>
+
     </head>
     <body>
         <!-- Start page -->
@@ -22,6 +24,7 @@
                     <a href="#loginPage" class="ui-btn ui-corner-all" id="zalogujst">ZALOGUJ</a>
                     <p> LUB </p>
                     <a href="#regPage" class="ui-btn ui-corner-all" id="zarejestrujst">ZAREJESTRUJ</a>
+                    <button onclick="window.plugins.toast.show('Hello there!', 'long', 'center', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})">Toast show long center</button>
                 </div>
             </div>
         </div>
